@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Samples.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wpf="clr-namespace:MultiLanguageManager.WPF;assembly=MultiLanguageManager.WPF"
+    xmlns:lan="clr-namespace:MultiLanguageManager.WPF;assembly=MultiLanguageManager.WPF"
     Title="MainWindow"
     Width="800"
     Height="450"
@@ -13,7 +13,7 @@
     <TabControl>
         <TabItem>
             <StackPanel x:Name="stc">
-                <Button wpf:Lan.Key="1"  Click="Button_Click"/>
+                <Button lan:Xaml.Key="btn_readInCode"  Click="Button_Click"/>
             </StackPanel>
         </TabItem>
         <TabItem />

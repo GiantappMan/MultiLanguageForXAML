@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultiLanguageManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Samples.WPF
         {
             InitializeComponent();
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;

@@ -9,7 +9,12 @@
     <Import_RootNamespace>MultiLanguageManager</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Lan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDataBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonDB.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ControlMaps\" />
   </ItemGroup>
 </Project>
