@@ -16,7 +16,7 @@ using System.Windows.Controls;
 
 
 
-namespace MultiLanguageManager.WPF
+namespace MultiLanguageManager
 {
     public class Xaml
     {
@@ -24,7 +24,19 @@ namespace MultiLanguageManager.WPF
 
         static Xaml()
         {
+            #region maps
             _maps.Add(typeof(Button), ContentControl.ContentProperty);
+            _maps.Add(typeof(TextBlock), TextBlock.TextProperty);
+
+#if WINDOWS_UWP
+
+#else
+            _maps.Add(typeof(Label), ContentControl.ContentProperty);
+            _maps.Add(typeof(TabItem), HeaderedContentControl.HeaderProperty);
+            _maps.Add(typeof(Expander), HeaderedContentControl.HeaderProperty);
+
+#endif
+            #endregion
         }
 
         public static Dictionary<Type, DependencyProperty> CustomMaps { private set; get; } = new Dictionary<Type, DependencyProperty>();
@@ -46,8 +58,9 @@ namespace MultiLanguageManager.WPF
         public static readonly DependencyProperty KeyProperty =
             DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(new PropertyChangedCallback(async (sender, e) =>
             {
+                //WeakReference
                 FrameworkElement element = sender as FrameworkElement;
-                element.Unloaded += Element_Unloaded;
+                //element.Unloaded += Element_Unloaded;
 
                 var key = e.NewValue.ToString();
                 var lan = await LanService.Get(key);
@@ -55,6 +68,7 @@ namespace MultiLanguageManager.WPF
                 DependencyProperty targetProperty = GetTargetProperty(element);
                 if (targetProperty != null)
                     element.SetValue(targetProperty, lan);
+
             })));
 
         private static DependencyProperty GetTargetProperty(FrameworkElement element)
@@ -79,7 +93,8 @@ namespace MultiLanguageManager.WPF
 
         private static void Element_Unloaded(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            FrameworkElement element = sender as FrameworkElement;
+            element.Unloaded -= Element_Unloaded;
         }
 
         #endregion

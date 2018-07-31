@@ -1,7 +1,7 @@
 ﻿{
-  "txtBlock_1": "one",
-  "txtBlock_2": "two",
-  "txtBlock_3": "three",
+  "txt": "one",
+  "txt2": "two",
+  "txt3": "three",
   "txtBlock_format1": "format 1 {0}",
   "txtBlock_format2": "format 2 {0} {1}",
   "txtBlock_format3": "format 3 {1} {0} {2}",

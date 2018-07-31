@@ -30,8 +30,8 @@ namespace Samples.WPF
         {
             var l = await LanService.Get("btn_readInCode");
             MessageBox.Show(l);
-            //Button btn = sender as Button;
-            //stc.Children.Remove(btn);
+            Button btn = sender as Button;
+            stc.Children.Remove(btn);
         }
     }
 }

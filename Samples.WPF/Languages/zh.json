@@ -1,7 +1,7 @@
 ﻿{
-  "txtBlock_1": "一",
-  "txtBlock_2": "二",
-  "txtBlock_3": "三",
+  "txt": "一",
+  "txt2": "二",
+  "txt3": "三",
   "txtBlock_format1": "格式化1 {0}",
   "txtBlock_format2": "格式化2 {0} {1}",
   "txtBlock_format3": "格式化3 {1} {0} {2}",
