@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultiLanguageManager;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +32,10 @@ namespace Samples.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+
+            string path = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Languages");
+            LanService.Init(new JsonDB(path));
         }
 
         /// <summary>

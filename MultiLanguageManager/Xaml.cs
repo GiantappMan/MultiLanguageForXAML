@@ -18,7 +18,7 @@ using System.Windows.Controls;
 
 namespace MultiLanguageManager
 {
-    public class Xaml
+    public class Xaml : DependencyObject
     {
         static Dictionary<Type, DependencyProperty> _maps = new Dictionary<Type, DependencyProperty>();
 
@@ -54,22 +54,23 @@ namespace MultiLanguageManager
             obj.SetValue(KeyProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for LKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty KeyProperty =
-            DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(new PropertyChangedCallback(async (sender, e) =>
-            {
-                //WeakReference
-                FrameworkElement element = sender as FrameworkElement;
-                //element.Unloaded += Element_Unloaded;
+            DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(
+                new PropertyChangedCallback(
+                    async (sender, e) =>
+                    {
+                        //WeakReference
+                        FrameworkElement element = sender as FrameworkElement;
 
-                var key = e.NewValue.ToString();
-                var lan = await LanService.Get(key);
+                        var key = e.NewValue.ToString();
+                        var lan = await LanService.Get(key);
 
-                DependencyProperty targetProperty = GetTargetProperty(element);
-                if (targetProperty != null)
-                    element.SetValue(targetProperty, lan);
+                        DependencyProperty targetProperty = GetTargetProperty(element);
+                        if (targetProperty != null)
+                            element.SetValue(targetProperty, lan);
 
-            })));
+                    })
+                ));
 
         private static DependencyProperty GetTargetProperty(FrameworkElement element)
         {

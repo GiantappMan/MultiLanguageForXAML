@@ -23,7 +23,7 @@ namespace MultiLanguageManager
 #if WINDOWS_UWP
             var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
             var language = new Windows.Globalization.Language(topUserLanguage);
-            _currentCulture = language.DisplayName;
+            _currentCulture = language.LanguageTag;
 #else
             _currentCulture = Thread.CurrentThread.CurrentUICulture.Name;
 #endif
