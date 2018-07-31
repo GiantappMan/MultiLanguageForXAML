@@ -25,11 +25,13 @@ namespace Samples.WPF
         {
             InitializeComponent();
         }
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            stc.Children.Remove(btn);
+            var l = await LanService.Get("btn_readInCode");
+            MessageBox.Show(l);
+            //Button btn = sender as Button;
+            //stc.Children.Remove(btn);
         }
     }
 }

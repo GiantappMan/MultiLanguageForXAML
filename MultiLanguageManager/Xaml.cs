@@ -53,7 +53,8 @@ namespace MultiLanguageManager.WPF
                 var lan = await LanService.Get(key);
 
                 DependencyProperty targetProperty = GetTargetProperty(element);
-                element.SetValue(targetProperty, lan);
+                if (targetProperty != null)
+                    element.SetValue(targetProperty, lan);
             })));
 
         private static DependencyProperty GetTargetProperty(FrameworkElement element)
@@ -65,6 +66,13 @@ namespace MultiLanguageManager.WPF
                 if (temp.Value != null)
                     result = temp.Value;
             }
+
+            if (result != null)
+                return result;
+
+            var temp1 = _maps.FirstOrDefault(m => m.Key == element.GetType());
+            if (temp1.Value != null)
+                result = temp1.Value;
 
             return result;
         }

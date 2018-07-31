@@ -30,7 +30,7 @@ namespace MultiLanguageManager
                 if (data == null)
                 {
                     var files = Directory.GetFiles(jsonDir, cultureName);
-
+                    //找不到匹配的，找近似的。例如 zh-CHS找不到,zh也可以
                     if (files.Length == 0)
                     {
                         bool isSubLan = cultureName.Split('-').Length > 1;
