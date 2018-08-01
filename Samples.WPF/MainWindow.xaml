@@ -18,6 +18,15 @@
                     <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
                     <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
                 </ComboBox>
+                <CheckBox lan:Xaml.Key="chk" />
+                <Expander lan:Xaml.Key="expander" />
+                <Label lan:Xaml.Key="label" />
+                <MenuItem Header="test" lan:Xaml.Key="menuItem" />
+                <RadioButton lan:Xaml.Key="radioBtn" />
+                <TextBlock lan:Xaml.Key="textBlock" />
+                <TextBlock lan:Xaml.Key="txtBlock_format1" />
+                <TextBlock lan:Xaml.Key="txtBlock_format2" />
+                <TextBlock lan:Xaml.Key="txtBlock_format3" />
             </StackPanel>
         </TabItem>
         <TabItem lan:Xaml.Key="txt2" />

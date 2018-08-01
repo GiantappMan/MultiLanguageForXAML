@@ -9,5 +9,11 @@
   "btn_readInCode": "从代码中读取",
   "zh": "中文",
   "en": "英语",
-  "title": "标题"
+  "title": "标题",
+  "chk": "复选框",
+  "expander": "展开",
+  "label": "标签",
+  "menuItem": "菜单项",
+  "radioBtn": "单选框",
+  "textBlock": "文本",
 }

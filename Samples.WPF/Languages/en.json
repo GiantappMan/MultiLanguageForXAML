@@ -8,5 +8,11 @@
   "zh": "Chinese",
   "en": "English",
   "btn_readInCode": "read in code",
-  "title": "title"
+  "title": "title",
+  "chk": "checkbox",
+  "expander": "expander",
+  "label": "label",
+  "menuItem": "MenuItem",
+  "radioBtn": "RadioBtn",
+  "textBlock": "textblock"
 }

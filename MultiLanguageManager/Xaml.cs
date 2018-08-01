@@ -33,6 +33,7 @@ namespace MultiLanguageManager
 #if WINDOWS_UWP
 
 #else
+            _maps.Add(typeof(HeaderedItemsControl), HeaderedItemsControl.HeaderProperty);
             _maps.Add(typeof(HeaderedContentControl), HeaderedContentControl.HeaderProperty);
             _maps.Add(typeof(Window), Window.TitleProperty);
             _maps.Add(typeof(Page), Page.TitleProperty);
@@ -51,28 +52,6 @@ namespace MultiLanguageManager
         public static string GetKey(DependencyObject obj)
         {
             return (string)obj.GetValue(KeyProperty);
-        }
-
-        internal static async Task UpdateLanguage()
-        {
-            if (_referencesElements.Count == 0)
-                return;
-
-            var oldList = new List<WeakReference<FrameworkElement>>(_referencesElements);
-            var newList = new List<WeakReference<FrameworkElement>>();
-            foreach (var item in oldList)
-            {
-                bool live = item.TryGetTarget(out FrameworkElement element);
-                if (!live)
-                    continue;
-                newList.Add(item);
-
-                var key = element.GetValue(KeyProperty);
-                if (key != null)
-                    await ApplyLanguage(element, key.ToString());
-            }
-
-            _referencesElements = newList;
         }
 
         public static void SetKey(DependencyObject obj, string value)
@@ -97,8 +76,33 @@ namespace MultiLanguageManager
                         {
                             _referencesElements.Add(new WeakReference<FrameworkElement>(element));
                         }
-                    })
-                ));
+                    })));
+
+        #endregion
+
+        #region methods
+
+        internal static async Task UpdateLanguage()
+        {
+            if (_referencesElements.Count == 0)
+                return;
+
+            var oldList = new List<WeakReference<FrameworkElement>>(_referencesElements);
+            var newList = new List<WeakReference<FrameworkElement>>();
+            foreach (var item in oldList)
+            {
+                bool live = item.TryGetTarget(out FrameworkElement element);
+                if (!live)
+                    continue;
+                newList.Add(item);
+
+                var key = element.GetValue(KeyProperty);
+                if (key != null)
+                    await ApplyLanguage(element, key.ToString());
+            }
+
+            _referencesElements = newList;
+        }
 
         //应用一个控件的语言
         private static async Task<bool> ApplyLanguage(FrameworkElement element, string key)
@@ -113,12 +117,20 @@ namespace MultiLanguageManager
             return false;
         }
 
+        private static bool IsSampeOrSubClass(Type type, Type type2)
+        {
+            bool result = type == type2;
+            if (!result)
+                result = type.GetTypeInfo().IsSubclassOf(type2);
+            return result;
+        }
+
         private static DependencyProperty MapProperty(FrameworkElement element)
         {
             DependencyProperty result = null;
             if (CustomMaps != null)
             {
-                var temp = CustomMaps.FirstOrDefault(m => element.GetType().GetTypeInfo().IsSubclassOf(m.Key));
+                var temp = CustomMaps.FirstOrDefault(m => IsSampeOrSubClass(element.GetType(), m.Key));
                 if (temp.Value != null)
                     result = temp.Value;
             }
@@ -126,7 +138,7 @@ namespace MultiLanguageManager
             if (result != null)
                 return result;
 
-            var temp1 = _maps.FirstOrDefault(m => element.GetType().GetTypeInfo().IsSubclassOf(m.Key));
+            var temp1 = _maps.FirstOrDefault(m => IsSampeOrSubClass(element.GetType(), m.Key));
             if (temp1.Value != null)
                 result = temp1.Value;
 
@@ -138,7 +150,6 @@ namespace MultiLanguageManager
             FrameworkElement element = sender as FrameworkElement;
             element.Unloaded -= Element_Unloaded;
         }
-
 
         private static bool CheckIsInDesignMode()
         {
