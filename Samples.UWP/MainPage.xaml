@@ -2,20 +2,37 @@
     x:Class="Samples.UWP.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Samples.UWP"
-    xmlns:lan="using:MultiLanguageManager"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lan="using:MultiLanguageManager"
+    xmlns:local="using:Samples.UWP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
-    <Grid>
-        <Hub>
-            
-            <!--<HubSection lan:Xaml.Key="txt" />
-            <HubSection lan:Xaml.Key="txt2"/>
-            <HubSection lan:Xaml.Key="txt3"/>-->
-        </Hub>
-        <Button lan:Xaml.Key="txt" />
-    </Grid>
+    <Hub>
+        <HubSection lan:Xaml.Key="txt">
+            <HubSection.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel x:Name="stcPanel" Loaded="stcPanel_Loaded">
+                        <Button lan:Xaml.Key="btn_readInCode" Click="btnReadInCode_Click" />
+                        <ComboBox SelectedIndex="0" SelectionChanged="cb_SelectionChanged">
+                            <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
+                            <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
+                        </ComboBox>
+                        <CheckBox lan:Xaml.Key="chk" />
+                        <!--<Expander lan:Xaml.Key="expander" />
+                        <Label lan:Xaml.Key="label" />
+                        <MenuItem lan:Xaml.Key="menuItem" Header="test" />-->
+                        <RadioButton lan:Xaml.Key="radioBtn" />
+                        <TextBlock lan:Xaml.Key="textBlock" />
+                        <TextBlock lan:Xaml.Key="txtBlock_format1" />
+                        <TextBlock lan:Xaml.Key="txtBlock_format2" />
+                        <TextBlock lan:Xaml.Key="txtBlock_format3" />
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection.ContentTemplate>
+        </HubSection>
+        <HubSection lan:Xaml.Key="txt2" />
+        <HubSection lan:Xaml.Key="txt3" />
+    </Hub>
 </Page>

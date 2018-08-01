@@ -24,8 +24,6 @@ namespace MultiLanguageManager
 
         public Task<string> Get(string key, string cultureName)
         {
-            //return Task.Run(() =>
-            //{
             if (!dataDict.ContainsKey(cultureName))
             {
                 var files = Directory.GetFiles(jsonDir, $"{cultureName}.json");
@@ -47,7 +45,6 @@ namespace MultiLanguageManager
 
             string result = dataDict[cultureName][key];
             return Task.FromResult(result);
-            //});
         }
     }
 }

@@ -3,6 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
+#if WINDOWS_UWP
+using Windows.Globalization;
+
+#else
+
+#endif
+
 namespace MultiLanguageManager
 {
     public class LanService
@@ -47,16 +54,17 @@ namespace MultiLanguageManager
             var r = await _db.Get(key, cultureName);
             return r;
         }
-        
+
         private static string GetCultureName()
         {
             string result = null;
 #if WINDOWS_UWP
-            var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-            var language = new Windows.Globalization.Language(topUserLanguage);
-            result = language.LanguageTag;
+            //var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+            //var language = new Windows.Globalization.Language(topUserLanguage);
+            //result = language.LanguageTag;
+            result = ApplicationLanguages.PrimaryLanguageOverride;
 #else
-            result = Thread.CurrentThread.CurrentUICulture.Name;
+            //result = Thread.CurrentThread.CurrentUICulture.Name;
 #endif
             return result;
         }
