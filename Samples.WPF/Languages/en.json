@@ -7,5 +7,6 @@
   "txtBlock_format3": "format 3 {1} {0} {2}",
   "zh": "Chinese",
   "en": "English",
-  "btn_readInCode": "read in code"
+  "btn_readInCode": "read in code",
+  "title": "title"
 }

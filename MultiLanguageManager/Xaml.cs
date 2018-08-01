@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.ComponentModel;
 
 #if WINDOWS_UWP
-
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.ApplicationModel;
 
 #else
 
@@ -28,17 +30,17 @@ namespace MultiLanguageManager
         {
             #region maps
             _maps.Add(typeof(TextBlock), TextBlock.TextProperty);
-            _maps.Add(typeof(Button), ContentControl.ContentProperty);
-            _maps.Add(typeof(ComboBoxItem), ContentControl.ContentProperty);
-
 #if WINDOWS_UWP
 
 #else
-            _maps.Add(typeof(Label), ContentControl.ContentProperty);
-            _maps.Add(typeof(TabItem), HeaderedContentControl.HeaderProperty);
-            _maps.Add(typeof(Expander), HeaderedContentControl.HeaderProperty);
+            _maps.Add(typeof(HeaderedContentControl), HeaderedContentControl.HeaderProperty);
+            _maps.Add(typeof(Window), Window.TitleProperty);
+            _maps.Add(typeof(Page), Page.TitleProperty);
 
 #endif
+            //必须放到最后，因为HeaderedContentControl继承自Content
+            _maps.Add(typeof(ContentControl), ContentControl.ContentProperty);
+
             #endregion
         }
 
@@ -83,25 +85,32 @@ namespace MultiLanguageManager
                 new PropertyChangedCallback(
                     async (sender, e) =>
                     {
+                        bool isInDesignMode = CheckIsInDesignMode();
+                        if (isInDesignMode)
+                            return;
+
                         FrameworkElement element = sender as FrameworkElement;
                         var key = e.NewValue.ToString();
-                        await ApplyLanguage(element, key);
+                        bool ok = await ApplyLanguage(element, key);
+
+                        if (ok && LanService.CanHotUpdate)
+                        {
+                            _referencesElements.Add(new WeakReference<FrameworkElement>(element));
+                        }
                     })
                 ));
 
         //应用一个控件的语言
-        private static async Task ApplyLanguage(FrameworkElement element, string key)
+        private static async Task<bool> ApplyLanguage(FrameworkElement element, string key)
         {
             var lan = await LanService.Get(key);
             DependencyProperty targetProperty = MapProperty(element);
             if (targetProperty != null)
             {
-                if (LanService.CanHotUpdate)
-                {
-                    _referencesElements.Add(new WeakReference<FrameworkElement>(element));
-                }
                 element.SetValue(targetProperty, lan);
+                return true;
             }
+            return false;
         }
 
         private static DependencyProperty MapProperty(FrameworkElement element)
@@ -109,7 +118,7 @@ namespace MultiLanguageManager
             DependencyProperty result = null;
             if (CustomMaps != null)
             {
-                var temp = CustomMaps.FirstOrDefault(m => m.Key == element.GetType());
+                var temp = CustomMaps.FirstOrDefault(m => element.GetType().GetTypeInfo().IsSubclassOf(m.Key));
                 if (temp.Value != null)
                     result = temp.Value;
             }
@@ -117,7 +126,7 @@ namespace MultiLanguageManager
             if (result != null)
                 return result;
 
-            var temp1 = _maps.FirstOrDefault(m => m.Key == element.GetType());
+            var temp1 = _maps.FirstOrDefault(m => element.GetType().GetTypeInfo().IsSubclassOf(m.Key));
             if (temp1.Value != null)
                 result = temp1.Value;
 
@@ -128,6 +137,20 @@ namespace MultiLanguageManager
         {
             FrameworkElement element = sender as FrameworkElement;
             element.Unloaded -= Element_Unloaded;
+        }
+
+
+        private static bool CheckIsInDesignMode()
+        {
+#if WINDOWS_UWP
+            if (DesignMode.DesignModeEnabled)
+                return true;
+#else
+            //防止设计器报错
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return true;
+#endif
+            return false;
         }
 
         #endregion

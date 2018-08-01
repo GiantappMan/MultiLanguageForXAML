@@ -27,15 +27,15 @@ namespace Samples.WPF
             InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void btnReadInCode_Click(object sender, RoutedEventArgs e)
         {
             var l = await LanService.Get("btn_readInCode");
             MessageBox.Show(l);
             Button btn = sender as Button;
-            stc.Children.Remove(btn);
+            stcPanel.Children.Remove(btn);
         }
 
-        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = e.AddedItems[0] as ComboBoxItem;
             string culture = item.Tag as string;

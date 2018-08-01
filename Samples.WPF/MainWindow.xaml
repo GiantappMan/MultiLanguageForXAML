@@ -6,17 +6,17 @@
     xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF"
     xmlns:local="clr-namespace:Samples.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
     Width="800"
     Height="450"
+    lan:Xaml.Key="title"
     mc:Ignorable="d">
     <TabControl>
         <TabItem lan:Xaml.Key="txt">
-            <StackPanel x:Name="stc">
-                <Button lan:Xaml.Key="btn_readInCode" Click="Button_Click" />
-                <ComboBox SelectionChanged="ComboBox_SelectionChanged">
-                    <ComboBoxItem Tag="en" lan:Xaml.Key="en" />
-                    <ComboBoxItem Tag="zh" lan:Xaml.Key="zh" />
+            <StackPanel x:Name="stcPanel">
+                <Button lan:Xaml.Key="btn_readInCode" Click="btnReadInCode_Click" />
+                <ComboBox SelectedIndex="0" SelectionChanged="cb_SelectionChanged">
+                    <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
+                    <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
                 </ComboBox>
             </StackPanel>
         </TabItem>

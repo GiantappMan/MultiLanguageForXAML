@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MultiLanguageManager
 {
@@ -46,7 +47,7 @@ namespace MultiLanguageManager
             var r = await _db.Get(key, cultureName);
             return r;
         }
-
+        
         private static string GetCultureName()
         {
             string result = null;
