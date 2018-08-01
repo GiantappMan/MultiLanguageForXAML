@@ -64,7 +64,7 @@ namespace MultiLanguageManager
             //result = language.LanguageTag;
             result = ApplicationLanguages.PrimaryLanguageOverride;
 #else
-            //result = Thread.CurrentThread.CurrentUICulture.Name;
+            result = Thread.CurrentThread.CurrentUICulture.Name;
 #endif
             return result;
         }
