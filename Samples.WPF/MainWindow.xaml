@@ -14,6 +14,10 @@
         <TabItem lan:Xaml.Key="txt">
             <StackPanel x:Name="stc">
                 <Button lan:Xaml.Key="btn_readInCode" Click="Button_Click" />
+                <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Tag="en" lan:Xaml.Key="en" />
+                    <ComboBoxItem Tag="zh" lan:Xaml.Key="zh" />
+                </ComboBox>
             </StackPanel>
         </TabItem>
         <TabItem lan:Xaml.Key="txt2" />

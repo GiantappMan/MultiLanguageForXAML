@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,15 @@ namespace Samples.WPF
             MessageBox.Show(l);
             Button btn = sender as Button;
             stc.Children.Remove(btn);
+        }
+
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = e.AddedItems[0] as ComboBoxItem;
+            string culture = item.Tag as string;
+
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
+            await LanService.UpdateLanguage();
         }
     }
 }

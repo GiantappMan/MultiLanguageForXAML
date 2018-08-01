@@ -10,7 +10,7 @@ namespace MultiLanguageManager
     public class JsonDB : IDataBase
     {
         private string jsonDir;
-        private dynamic data;
+        private Dictionary<string, dynamic> dataDict = new Dictionary<string, dynamic>();
 
         public JsonDB()
         {
@@ -20,16 +20,15 @@ namespace MultiLanguageManager
         public JsonDB(string jsonDir)
         {
             this.jsonDir = jsonDir;
-            data = null;
         }
 
         public Task<string> Get(string key, string cultureName)
         {
             //return Task.Run(() =>
             //{
-            if (data == null)
+            if (!dataDict.ContainsKey(cultureName))
             {
-                var files = Directory.GetFiles(jsonDir, cultureName);
+                var files = Directory.GetFiles(jsonDir, $"{cultureName}.json");
                 //找不到匹配的，找近似的。例如 zh-CHS找不到,zh也可以
                 if (files.Length == 0)
                 {
@@ -42,9 +41,11 @@ namespace MultiLanguageManager
                     return null;
 
                 string json = File.ReadAllText(files[0]);
-                data = JsonConvert.DeserializeObject<dynamic>(json);
+                var data = JsonConvert.DeserializeObject<dynamic>(json);
+                dataDict.Add(cultureName, data);
             }
-            string result = data[key];
+
+            string result = dataDict[cultureName][key];
             return Task.FromResult(result);
             //});
         }

@@ -104,12 +104,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="Languages\en.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Languages\zh.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="..\Samples.WPF\Languages\en.json">
+      <Link>Languages\en.json</Link>
+    </None>
+    <None Include="..\Samples.WPF\Languages\zh.json">
+      <Link>Languages\zh.json</Link>
+    </None>
     <None Include="Samples.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +143,7 @@
       <Name>MultiLanguageManager.UWP</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -14,7 +14,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)ControlMaps\" />
-  </ItemGroup>
 </Project>
