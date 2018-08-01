@@ -55,7 +55,7 @@ namespace MultiLanguageManager
         }
 
         public static readonly DependencyProperty KeyProperty =
-            DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(
+            DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(null,
                 new PropertyChangedCallback(
                     async (sender, e) =>
                     {
