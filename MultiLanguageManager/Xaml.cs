@@ -80,6 +80,60 @@ namespace MultiLanguageManager
 
         #endregion
 
+        #region Parameters
+
+        #region Parameter1
+
+        public static object GetParameter1(DependencyObject obj)
+        {
+            return obj.GetValue(Parameter1Property);
+        }
+
+        public static void SetParameter1(DependencyObject obj, object value)
+        {
+            obj.SetValue(Parameter1Property, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Parameter1.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty Parameter1Property =
+            DependencyProperty.RegisterAttached("Parameter1", typeof(object), typeof(Xaml), new PropertyMetadata(null));
+
+        #endregion
+
+        #region Parameter2
+
+        #endregion
+
+        #region Parameter3
+
+        #endregion
+
+        #region Parameter4
+
+        #endregion
+
+        #region Parameter5
+
+        #endregion
+
+        #region Parameter6
+
+        #endregion
+
+        #region Parameter7
+
+        #endregion
+
+        #region Parameter8
+
+        #endregion
+
+        #region Parameter9
+
+        #endregion
+
+        #endregion
+
         #region methods
 
         internal static async Task UpdateLanguage()
@@ -143,12 +197,6 @@ namespace MultiLanguageManager
                 result = temp1.Value;
 
             return result;
-        }
-
-        private static void Element_Unloaded(object sender, RoutedEventArgs e)
-        {
-            FrameworkElement element = sender as FrameworkElement;
-            element.Unloaded -= Element_Unloaded;
         }
 
         private static bool CheckIsInDesignMode()
