@@ -33,6 +33,7 @@ namespace MultiLanguageManager
     {
         static Dictionary<Type, DependencyProperty> _maps = new Dictionary<Type, DependencyProperty>();
         static List<WeakReference<FrameworkElement>> _referencesElements = new List<WeakReference<FrameworkElement>>();
+        static List<WeakReference<Run>> _referencesRuns = new List<WeakReference<Run>>();
 
         static Xaml()
         {
@@ -70,16 +71,31 @@ namespace MultiLanguageManager
         public static readonly DependencyProperty KeyProperty =
             DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(null,
                 new PropertyChangedCallback(
-                     (sender, e) =>
+                   async (sender, e) =>
                     {
                         bool isInDesignMode = CheckIsInDesignMode();
                         if (isInDesignMode)
                             return;
 
                         //不支持Run，因为WPF和UWP兼容有点恼火
-                        FrameworkElement element = sender as FrameworkElement;
-                        if (element != null)
-                            element.Loaded += Element_Loaded;
+                        if (sender is FrameworkElement)
+                        {
+                            FrameworkElement element = sender as FrameworkElement;
+                            if (element != null)
+                                element.Loaded += Element_Loaded;
+                        }
+                        else if (sender is Run)
+                        {
+                            Run run = sender as Run;
+                            var key = run.GetValue(KeyProperty);
+                            if (key != null)
+                            {
+                                bool ok = await ApplyLanguage(run, key.ToString());
+
+                                if (ok && LanService.CanHotUpdate)
+                                    _referencesRuns.Add(new WeakReference<Run>(run));
+                            }
+                        }
                     })));
 
         private static async void Element_Loaded(object sender, RoutedEventArgs e)
@@ -123,36 +139,56 @@ namespace MultiLanguageManager
 
         internal static async Task UpdateLanguage()
         {
-            if (_referencesElements.Count == 0)
-                return;
-
-            var oldList = new List<WeakReference<FrameworkElement>>(_referencesElements);
-            var newList = new List<WeakReference<FrameworkElement>>();
-            foreach (var item in oldList)
+            //处理控件
+            if (_referencesElements.Count > 0)
             {
-                bool live = item.TryGetTarget(out FrameworkElement element);
-                if (!live)
-                    //控件已释放
-                    continue;
-                newList.Add(item);
+                var oldList = new List<WeakReference<FrameworkElement>>(_referencesElements);
+                var newList = new List<WeakReference<FrameworkElement>>();
+                foreach (var item in oldList)
+                {
+                    bool live = item.TryGetTarget(out FrameworkElement element);
+                    if (!live)
+                        //控件已释放
+                        continue;
+                    newList.Add(item);
 
-                var key = element.GetValue(KeyProperty);
-                if (key != null)
-                    await ApplyLanguage(element, key.ToString());
+                    var key = element.GetValue(KeyProperty);
+                    if (key != null)
+                        await ApplyLanguage(element, key.ToString());
+                }
+
+                _referencesElements = newList;
             }
+            //处理run
+            if (_referencesRuns.Count > 0)
+            {
+                var oldList = new List<WeakReference<Run>>(_referencesRuns);
+                var newList = new List<WeakReference<Run>>();
+                foreach (var item in oldList)
+                {
+                    bool live = item.TryGetTarget(out Run element);
+                    if (!live)
+                        //控件已释放
+                        continue;
+                    newList.Add(item);
 
-            _referencesElements = newList;
+                    var key = element.GetValue(KeyProperty);
+                    if (key != null)
+                        await ApplyLanguage(element, key.ToString());
+                }
+
+                _referencesRuns = newList;
+            }
         }
 
         //应用一个控件的语言
-        private static async Task<bool> ApplyLanguage(FrameworkElement element, string key)
+        private static async Task<bool> ApplyLanguage(DependencyObject element, string key)
         {
             var lan = await LanService.Get(key);
             DependencyProperty targetProperty = MapProperty(element);
 
             if (targetProperty != null)
             {
-
                 //根据不同的类型有不同的赋值方式
                 if (IsSampeOrSubClass(element.GetType(), typeof(TextBlock)))
                 {
@@ -173,6 +209,13 @@ namespace MultiLanguageManager
                     element.SetValue(targetProperty, lan);
                 return true;
             }
+            else if (element is Run)
+            {
+                Run run = element as Run;
+                run.Text = lan;
+                return true;
+            }
+
             return false;
         }
 
@@ -235,9 +278,13 @@ namespace MultiLanguageManager
             return result;
         }
 
-        private static DependencyProperty MapProperty(FrameworkElement element)
+        private static DependencyProperty MapProperty(DependencyObject element)
         {
+            if (element is Run)
+                return null;
+
             DependencyProperty result = null;
+
             if (CustomMaps != null)
             {
                 var temp = CustomMaps.FirstOrDefault(m => IsSampeOrSubClass(element.GetType(), m.Key));

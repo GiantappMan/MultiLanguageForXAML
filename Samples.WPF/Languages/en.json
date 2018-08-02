@@ -14,5 +14,7 @@
   "label": "label",
   "menuItem": "MenuItem",
   "radioBtn": "RadioBtn",
-  "textBlock": "textblock"
+  "textBlock": "textblock",
+  "red": "red",
+  "blue": "blue"
 }

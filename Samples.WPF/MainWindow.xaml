@@ -42,13 +42,11 @@
                                 lan:Xaml.Key="red"
                                 FontStyle="Italic"
                                 Foreground="Red">
-                                red
                             </Run>
                             <Run
                                 lan:Xaml.Key="blue"
                                 FontStyle="Normal"
                                 Foreground="Blue">
-                                blue
                             </Run>
                             <Run FontStyle="Oblique" Foreground="Green">green</Run>
                         </lan:FormatParameters>
