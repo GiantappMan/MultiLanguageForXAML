@@ -52,3 +52,5 @@
             ApplicationLanguages.PrimaryLanguageOverride = CultureName;
             await LanService.UpdateLanguage();
 ```
+
+全栈开发qq群：191034956
