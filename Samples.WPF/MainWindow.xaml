@@ -29,7 +29,7 @@
                 <TextBlock lan:Xaml.Key="txtBlock_format2" />
                 <TextBlock lan:Xaml.Key="txtBlock_format3">
                     <lan:Xaml.Parameters>
-                        <lan:FormatParameters>                        
+                        <lan:FormatParameters>
                             <Run FontStyle="Italic" Foreground="Red">red</Run>
                             <Run FontStyle="Normal" Foreground="Blue">blue</Run>
                             <Run FontStyle="Oblique" Foreground="Green">green</Run>

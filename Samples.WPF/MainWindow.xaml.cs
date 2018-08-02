@@ -24,6 +24,8 @@ namespace Samples.WPF
     {
         public MainWindow()
         {
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
+            LanService.Init(new JsonDB(path), true);
             InitializeComponent();
         }
 

@@ -5,16 +5,18 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 #if WINDOWS_UWP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.ApplicationModel;
+using Windows.UI.Xaml.Documents;
 
 #else
-
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 #endif
 
@@ -147,18 +149,75 @@ namespace MultiLanguageManager
             var lan = await LanService.Get(key);
             DependencyProperty targetProperty = MapProperty(element);
 
-            var paramets = element.GetValue(ParametersProperty) as FormatParameters;
-            if (paramets != null && paramets.Count > 0)
-            {
-
-            }
-
             if (targetProperty != null)
             {
-                element.SetValue(targetProperty, lan);
+
+                //根据不同的类型有不同的赋值方式
+                if (IsSampeOrSubClass(element.GetType(), typeof(TextBlock)))
+                {
+                    var parameter = element.GetValue(ParametersProperty) as FormatParameters;
+                    List<Run> runs = GetRuns(parameter, lan);
+
+                    if (runs != null && runs.Count > 0)
+                    {
+                        var tempTextBlock = element as TextBlock;
+                        tempTextBlock.Inlines.Clear();
+
+                        runs.ForEach((item) =>
+                            {
+                                tempTextBlock.Inlines.Add(item);
+                            });
+                    }
+                }
+                else
+                    element.SetValue(targetProperty, lan);
                 return true;
             }
             return false;
+        }
+
+        private static List<Run> GetRuns(FormatParameters formatParameters, string input)
+        {
+            List<Run> result = new List<Run>();
+            //处理输入格式化参数
+            if (formatParameters != null && formatParameters.Count > 0)
+            {
+                Match match = null;
+                do
+                {
+                    match = Regex.Match(input, @"(.*?)({(\d+)})");
+                    if (match.Groups.Count >= 4)
+                    {
+                        var source = match.Groups[0].Value;
+                        var text = match.Groups[1].Value;
+                        //插入正文
+                        result.Add(new Run() { Text = text });
+
+                        //插入format
+                        var templateIndexStr = match.Groups[3].Value;
+                        int.TryParse(templateIndexStr, out int templateIndex);
+                        if (templateIndex < formatParameters.Count)
+                        {
+                            var item = formatParameters[templateIndex];
+                            if (item is Run)
+                                result.Add(item as Run);
+                            else
+                                result.Add(new Run() { Text = item.ToString() });
+                        }
+
+                        //删除已经处理过的文字input
+                        input = input.Remove(0, source.Length);
+                    }
+                } while (match != null && match.Success);
+
+                if (!string.IsNullOrEmpty(input))
+                    result.Add(new Run() { Text = input });
+
+            }
+            else
+                result.Add(new Run() { Text = input });
+
+            return result;
         }
 
         private static bool IsSampeOrSubClass(Type type, Type type2)

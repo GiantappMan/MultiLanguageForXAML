@@ -17,8 +17,7 @@ namespace Samples.WPF
     {
         public App()
         {
-            string path = Path.Combine(Environment.CurrentDirectory, "Languages");
-            LanService.Init(new JsonDB(path), true);
+  
         }
     }
 }
