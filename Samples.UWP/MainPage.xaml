@@ -6,6 +6,7 @@
     xmlns:lan="using:MultiLanguageManager"
     xmlns:local="using:Samples.UWP"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="using:System"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -24,10 +25,30 @@
                         <Label lan:Xaml.Key="label" />
                         <MenuItem lan:Xaml.Key="menuItem" Header="test" />-->
                         <RadioButton lan:Xaml.Key="radioBtn" />
-                        <TextBlock lan:Xaml.Key="textBlock" />
+                        <TextBlock lan:Xaml.Key="textBlock" Foreground="Red" />
                         <TextBlock lan:Xaml.Key="txtBlock_format1" />
-                        <TextBlock lan:Xaml.Key="txtBlock_format2" />
-                        <TextBlock lan:Xaml.Key="txtBlock_format3" />
+                        <TextBlock lan:Xaml.Key="txtBlock_format2">
+                            <lan:Xaml.Parameters>
+                                <lan:FormatParameters>
+                                    <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                                </lan:FormatParameters>
+                            </lan:Xaml.Parameters>
+                        </TextBlock>
+                        <TextBlock lan:Xaml.Key="txtBlock_format3">
+                            <lan:Xaml.Parameters>
+                                <lan:FormatParameters>
+                                    <Run
+                                        lan:Xaml.Key="red"
+                                        FontStyle="Italic"
+                                        Foreground="Red" />
+                                    <Run
+                                        lan:Xaml.Key="blue"
+                                        FontStyle="Normal"
+                                        Foreground="Blue" />
+                                    <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                                </lan:FormatParameters>
+                            </lan:Xaml.Parameters>
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </HubSection.ContentTemplate>
