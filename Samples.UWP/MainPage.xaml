@@ -17,7 +17,10 @@
                     <StackPanel x:Name="stcPanel" Loaded="stcPanel_Loaded">
                         <Button lan:Xaml.Key="btn_readInCode" Click="btnReadInCode_Click" />
                         <ComboBox SelectedIndex="0" SelectionChanged="cb_SelectionChanged">
-                            <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
+                            <ComboBoxItem
+                                lan:Xaml.Key="zh"
+                                IsSelected="True"
+                                Tag="zh" />
                             <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
                         </ComboBox>
                         <CheckBox lan:Xaml.Key="chk" />
