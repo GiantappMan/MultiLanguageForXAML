@@ -23,7 +23,12 @@
  ```
 * **初始化**
 ```csharp
+            //WPF
             string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
+            LanService.Init(new JsonDB(path), true);
+            
+            //UWP
+            string path = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Languages");
             LanService.Init(new JsonDB(path), true);
 ```
 
