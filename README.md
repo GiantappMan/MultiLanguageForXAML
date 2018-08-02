@@ -3,10 +3,12 @@
 
 ## 效果预览
 * **WPF**
+
 ![steup](https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/screenshots/WPF.gif)
 
 
 * **UWP**
+
 ![steup](https://github.com/DaZiYuan/MultiLanguageForXAML/blob/master/screenshots/UWP.gif?raw=true)
 
 ## 用法
