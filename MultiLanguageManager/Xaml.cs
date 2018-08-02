@@ -24,7 +24,7 @@ using System.Windows.Documents;
 
 namespace MultiLanguageManager
 {
-    public class FormatParameters : Collection<DependencyObject>
+    public class FormatParameters : Collection<object>
     {
         public string Test { get; set; }
     }
@@ -76,9 +76,10 @@ namespace MultiLanguageManager
                         if (isInDesignMode)
                             return;
 
+                        //不支持Run，因为WPF和UWP兼容有点恼火
                         FrameworkElement element = sender as FrameworkElement;
-                        element.Loaded += Element_Loaded;
-
+                        if (element != null)
+                            element.Loaded += Element_Loaded;
                     })));
 
         private static async void Element_Loaded(object sender, RoutedEventArgs e)
@@ -162,7 +163,6 @@ namespace MultiLanguageManager
                     {
                         var tempTextBlock = element as TextBlock;
                         tempTextBlock.Inlines.Clear();
-
                         runs.ForEach((item) =>
                             {
                                 tempTextBlock.Inlines.Add(item);
@@ -201,6 +201,13 @@ namespace MultiLanguageManager
                             var item = formatParameters[templateIndex];
                             if (item is Run)
                                 result.Add(item as Run);
+                            else if (item is TextBlock)
+                            {
+                                var textBlock = item as TextBlock;
+                                result.Add(new Run() { Text = textBlock.Text });
+                                foreach (Run inlineItem in textBlock.Inlines)
+                                    result.Add(inlineItem);
+                            }
                             else
                                 result.Add(new Run() { Text = item.ToString() });
                         }

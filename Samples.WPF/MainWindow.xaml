@@ -7,6 +7,7 @@
     xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF"
     xmlns:local="clr-namespace:Samples.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Width="800"
     Height="450"
     lan:Xaml.Key="title"
@@ -24,14 +25,31 @@
                 <Label lan:Xaml.Key="label" />
                 <MenuItem lan:Xaml.Key="menuItem" Header="test" />
                 <RadioButton lan:Xaml.Key="radioBtn" />
-                <TextBlock lan:Xaml.Key="textBlock" />
+                <TextBlock lan:Xaml.Key="textBlock" Foreground="Red" />
                 <TextBlock lan:Xaml.Key="txtBlock_format1" />
-                <TextBlock lan:Xaml.Key="txtBlock_format2" />
+                <TextBlock lan:Xaml.Key="txtBlock_format2">
+                    <lan:Xaml.Parameters>
+                        <lan:FormatParameters>
+                            <sys:String>1</sys:String>
+                            <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                        </lan:FormatParameters>
+                    </lan:Xaml.Parameters>
+                </TextBlock>
                 <TextBlock lan:Xaml.Key="txtBlock_format3">
                     <lan:Xaml.Parameters>
                         <lan:FormatParameters>
-                            <Run FontStyle="Italic" Foreground="Red">red</Run>
-                            <Run FontStyle="Normal" Foreground="Blue">blue</Run>
+                            <Run
+                                lan:Xaml.Key="red"
+                                FontStyle="Italic"
+                                Foreground="Red">
+                                red
+                            </Run>
+                            <Run
+                                lan:Xaml.Key="blue"
+                                FontStyle="Normal"
+                                Foreground="Blue">
+                                blue
+                            </Run>
                             <Run FontStyle="Oblique" Foreground="Green">green</Run>
                         </lan:FormatParameters>
                     </lan:Xaml.Parameters>
