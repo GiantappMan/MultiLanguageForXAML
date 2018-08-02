@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 #if WINDOWS_UWP
 using Windows.UI.Xaml;
@@ -21,6 +22,11 @@ using System.Windows.Controls;
 
 namespace MultiLanguageManager
 {
+    public class FormatParameters : Collection<DependencyObject>
+    {
+        public string Test { get; set; }
+    }
+
     public class Xaml : DependencyObject
     {
         static Dictionary<Type, DependencyProperty> _maps = new Dictionary<Type, DependencyProperty>();
@@ -62,75 +68,51 @@ namespace MultiLanguageManager
         public static readonly DependencyProperty KeyProperty =
             DependencyProperty.RegisterAttached("Key", typeof(string), typeof(Xaml), new PropertyMetadata(null,
                 new PropertyChangedCallback(
-                    async (sender, e) =>
+                     (sender, e) =>
                     {
                         bool isInDesignMode = CheckIsInDesignMode();
                         if (isInDesignMode)
                             return;
 
                         FrameworkElement element = sender as FrameworkElement;
-                        var key = e.NewValue.ToString();
-                        bool ok = await ApplyLanguage(element, key);
+                        element.Loaded += Element_Loaded;
 
-                        if (ok && LanService.CanHotUpdate)
-                        {
-                            _referencesElements.Add(new WeakReference<FrameworkElement>(element));
-                        }
                     })));
+
+        private static async void Element_Loaded(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            element.Loaded -= Element_Loaded;
+
+            var key = element.GetValue(KeyProperty);
+            if (key != null)
+            {
+                bool ok = await ApplyLanguage(element, key.ToString());
+
+                if (ok && LanService.CanHotUpdate)
+                {
+                    _referencesElements.Add(new WeakReference<FrameworkElement>(element));
+                }
+            }
+        }
 
         #endregion
 
         #region Parameters
 
-        #region Parameter1
-
-        public static object GetParameter1(DependencyObject obj)
+        public static FormatParameters GetParameters(DependencyObject obj)
         {
-            return obj.GetValue(Parameter1Property);
+            return (FormatParameters)obj.GetValue(ParametersProperty);
         }
 
-        public static void SetParameter1(DependencyObject obj, object value)
+        public static void SetParameters(DependencyObject obj, FormatParameters value)
         {
-            obj.SetValue(Parameter1Property, value);
+            obj.SetValue(ParametersProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Parameter1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Parameter1Property =
-            DependencyProperty.RegisterAttached("Parameter1", typeof(object), typeof(Xaml), new PropertyMetadata(null));
-
-        #endregion
-
-        #region Parameter2
-
-        #endregion
-
-        #region Parameter3
-
-        #endregion
-
-        #region Parameter4
-
-        #endregion
-
-        #region Parameter5
-
-        #endregion
-
-        #region Parameter6
-
-        #endregion
-
-        #region Parameter7
-
-        #endregion
-
-        #region Parameter8
-
-        #endregion
-
-        #region Parameter9
-
-        #endregion
+        // Using a DependencyProperty as the backing store for Parameters.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ParametersProperty =
+            DependencyProperty.RegisterAttached("Parameters", typeof(FormatParameters), typeof(Xaml), new PropertyMetadata(null));
 
         #endregion
 
@@ -147,6 +129,7 @@ namespace MultiLanguageManager
             {
                 bool live = item.TryGetTarget(out FrameworkElement element);
                 if (!live)
+                    //控件已释放
                     continue;
                 newList.Add(item);
 
@@ -163,6 +146,13 @@ namespace MultiLanguageManager
         {
             var lan = await LanService.Get(key);
             DependencyProperty targetProperty = MapProperty(element);
+
+            var paramets = element.GetValue(ParametersProperty) as FormatParameters;
+            if (paramets != null && paramets.Count > 0)
+            {
+
+            }
+
             if (targetProperty != null)
             {
                 element.SetValue(targetProperty, lan);

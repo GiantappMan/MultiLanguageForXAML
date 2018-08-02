@@ -2,6 +2,7 @@
     x:Class="Samples.WPF.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:collection="clr-namespace:System.Collections;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF"
     xmlns:local="clr-namespace:Samples.WPF"
@@ -21,12 +22,20 @@
                 <CheckBox lan:Xaml.Key="chk" />
                 <Expander lan:Xaml.Key="expander" />
                 <Label lan:Xaml.Key="label" />
-                <MenuItem Header="test" lan:Xaml.Key="menuItem" />
+                <MenuItem lan:Xaml.Key="menuItem" Header="test" />
                 <RadioButton lan:Xaml.Key="radioBtn" />
                 <TextBlock lan:Xaml.Key="textBlock" />
                 <TextBlock lan:Xaml.Key="txtBlock_format1" />
                 <TextBlock lan:Xaml.Key="txtBlock_format2" />
-                <TextBlock lan:Xaml.Key="txtBlock_format3" />
+                <TextBlock lan:Xaml.Key="txtBlock_format3">
+                    <lan:Xaml.Parameters>
+                        <lan:FormatParameters>                        
+                            <Run FontStyle="Italic" Foreground="Red">red</Run>
+                            <Run FontStyle="Normal" Foreground="Blue">blue</Run>
+                            <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                        </lan:FormatParameters>
+                    </lan:Xaml.Parameters>
+                </TextBlock>
             </StackPanel>
         </TabItem>
         <TabItem lan:Xaml.Key="txt2" />
