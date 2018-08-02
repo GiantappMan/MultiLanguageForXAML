@@ -1,9 +1,37 @@
 # MultiLanguageForXAML
 针对WPF和UWP的通用多语言支持库
 
-## 要解决的痛点：
+## 效果预览
+* **WPF**
+![steup](https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/screenshots/WPF.gif)
 
-* **易用性**： 尝试了几个方案，都不满意决定自己做
-* **json存储**： resource文件编辑要开vs太复杂，xaml写法不简洁
 
+* **UWP**
+![steup](https://github.com/DaZiYuan/MultiLanguageForXAML/blob/master/screenshots/UWP.gif?raw=true)
 
+## 用法
+
+* **定义语言文件**
+ ```json
+  //zh.json
+    {"txt": "一"}
+
+//en.json
+    {"txt": "one"}
+ ```
+* **初始化**
+```csharp
+            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
+            LanService.Init(new JsonDB(path), true);
+```
+
+* **XAML**
+```XAML
+
+<Window
+    ...
+    xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF">
+            <Button lan:Xaml.Key="txt" />
+</Window/>
+
+```
