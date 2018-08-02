@@ -42,3 +42,13 @@
 </Window/>
 
 ```
+* **切换语言**
+```csharp
+            //WPF
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureName);
+            await LanService.UpdateLanguage();
+            
+            //UWP
+            ApplicationLanguages.PrimaryLanguageOverride = CultureName;
+            await LanService.UpdateLanguage();
+```
