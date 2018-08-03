@@ -16,10 +16,19 @@
 * **定义语言文件**
  ```json
   //zh.json
-    {"txt": "一"}
+    {
+    "txt": "一",
+    "format":"你好 {0} !",
+    "world":"世界"
+    }
 
 //en.json
-    {"txt": "one"}
+    {
+    "txt": "one",
+    "format":"hello {0} !",
+    "world":"world"
+    }
+
  ```
 * **初始化**
 ```csharp
@@ -39,6 +48,13 @@
     ...
     xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF">
             <Button lan:Xaml.Key="txt" />
+            <Button lan:Xaml.Key="format">
+              <lan:Xaml.Parameters>
+                  <lan:FormatParameters>
+                      <Run lan:Xaml.Key="world" FontStyle="Italic" Foreground="Red" />
+                  </lan:FormatParameters>
+              </lan:Xaml.Parameters>
+            </Button>
 </Window/>
 
 ```
