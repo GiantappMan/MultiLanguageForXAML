@@ -1,7 +1,7 @@
 # MultiLanguageForXAML
 针对WPF和UWP的通用多语言支持库
 
-[Nuget](https://www.nuget.org/packages/MultiLanguageForXAML/)
+## [Nuget](https://www.nuget.org/packages/MultiLanguageForXAML/)
 
 ## 效果预览
 * **WPF**
