@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MultiLanguageForXAML</id>
+    <version>1.0.0.7</version>
+    <title>MultiLanguageForXAML</title>
+    <authors>MscoderStudio</authors>
+    <owners>MscoderStudio</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</projectUrl>
+    <description>Multi-Language support For WPF/UWP.
+简单易用的WPF多语言切换框架。
+看文档分分钟上手</description>
+    <summary>Multi-Language support For WPF/UWP</summary>
+    <copyright>MscoderStudio</copyright>
+  </metadata>
+  <files>
+    <!-- <file src="..\MultiLanguageManager.WPF\bin\Release\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" /> -->
+    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-arm\native\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-arm\native\MultiLanguageManager.UWP.pri" />
+    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-x64\native\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-x64\native\MultiLanguageManager.UWP.pri" />
+    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-x86\native\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-x86\native\MultiLanguageManager.UWP.pri" />
+  </files>
+</package>
