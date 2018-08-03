@@ -59,10 +59,14 @@ namespace MultiLanguageManager
         {
             string result = null;
 #if WINDOWS_UWP
-            //var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-            //var language = new Windows.Globalization.Language(topUserLanguage);
-            //result = language.LanguageTag;
+          
             result = ApplicationLanguages.PrimaryLanguageOverride;
+            if (string.IsNullOrEmpty(result))
+            {
+                var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+                var language = new Windows.Globalization.Language(topUserLanguage);
+                result = language.LanguageTag;
+            }
 #else
             result = Thread.CurrentThread.CurrentUICulture.Name;
 #endif
