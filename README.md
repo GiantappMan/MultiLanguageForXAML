@@ -47,14 +47,19 @@
 <Window
     ...
     xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF">
-            <Button lan:Xaml.Key="txt" />
-            <Button lan:Xaml.Key="format">
-              <lan:Xaml.Parameters>
-                  <lan:FormatParameters>
-                      <Run lan:Xaml.Key="world" FontStyle="Italic" Foreground="Red" />
-                  </lan:FormatParameters>
-              </lan:Xaml.Parameters>
-            </Button>
+    <StackPanel>
+        <Button lan:Xaml.Key="txt" />
+        <Button lan:Xaml.Key="format">
+            <lan:Xaml.Parameters>
+                <lan:FormatParameters>
+                    <Run
+                        lan:Xaml.Key="world"
+                        FontStyle="Italic"
+                        Foreground="Red" />
+                </lan:FormatParameters>
+            </lan:Xaml.Parameters>
+        </Button>
+    </StackPanel>
 </Window/>
 
 ```
