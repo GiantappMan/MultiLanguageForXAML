@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Hub>
+    <Hub lan:Xaml.Key="header">
         <HubSection lan:Xaml.Key="txt">
             <HubSection.ContentTemplate>
                 <DataTemplate>
@@ -56,7 +56,20 @@
                 </DataTemplate>
             </HubSection.ContentTemplate>
         </HubSection>
-        <HubSection lan:Xaml.Key="txt2" />
+        <HubSection lan:Xaml.Key="txt2">
+            <HubSection.ContentTemplate>
+                <DataTemplate>
+                    <Pivot>
+                        <PivotItem lan:Xaml.Key="title">
+                            <Button lan:Xaml.Key="red" />
+                        </PivotItem>
+                        <PivotItem lan:Xaml.Key="label">
+                            <Button lan:Xaml.Key="blue" />
+                        </PivotItem>
+                    </Pivot>
+                </DataTemplate>
+            </HubSection.ContentTemplate>
+        </HubSection>
         <HubSection lan:Xaml.Key="txt3">
             <lan:Xaml.Parameters>
                 <lan:FormatParameters>

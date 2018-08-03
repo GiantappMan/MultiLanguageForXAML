@@ -40,6 +40,9 @@ namespace MultiLanguageManager
             #region maps
             _maps.Add(typeof(TextBlock), TextBlock.TextProperty);
 #if WINDOWS_UWP
+            _maps.Add(typeof(Hub), Hub.HeaderProperty);
+            _maps.Add(typeof(HubSection), HubSection.HeaderProperty);
+            _maps.Add(typeof(PivotItem), PivotItem.HeaderProperty);
 
 #else
             _maps.Add(typeof(HeaderedItemsControl), HeaderedItemsControl.HeaderProperty);
@@ -189,21 +192,22 @@ namespace MultiLanguageManager
 
             if (targetProperty != null)
             {
-                //根据不同的类型有不同的赋值方式
-                if (
+                var parameter = element.GetValue(ParametersProperty) as FormatParameters;
+
+                //需要格式化字符串
+                if (parameter != null &&
+                    parameter.Count > 0 &&
                     !IsSampeOrSubClass(element.GetType(), typeof(Window)) &&
                     !IsSampeOrSubClass(element.GetType(), typeof(Page)) &&
                     (IsSampeOrSubClass(element.GetType(), typeof(TextBlock)) ||
                     IsSampeOrSubClass(element.GetType(), typeof(ContentControl))
                     ))
                 {
-                    var parameter = element.GetValue(ParametersProperty) as FormatParameters;
                     List<Run> runs = GetRuns(parameter, lan);
 
                     if (runs != null && runs.Count > 0)
                     {
                         var tempTextBlock = element as TextBlock;
-
 
 #if WINDOWS_UWP
                         if (element is Hub)
@@ -251,11 +255,12 @@ namespace MultiLanguageManager
                     }
                 }
                 else
+                    //直接设置字符串的情况
                     element.SetValue(targetProperty, lan);
                 return true;
             }
             else if (element is Run)
-            {
+            {//run特殊处理
                 Run run = element as Run;
                 run.Text = lan;
                 return true;
