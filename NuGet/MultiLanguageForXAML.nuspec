@@ -14,14 +14,15 @@
 看文档分分钟上手</description>
     <summary>Multi-Language support For WPF/UWP</summary>
     <copyright>MscoderStudio</copyright>
+     <tags>UWP WPF XAML</tags>
   </metadata>
   <files>
     <!-- <file src="..\MultiLanguageManager.WPF\bin\Release\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" /> -->
-    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-arm\native\MultiLanguageManager.UWP.dll" />
-    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-arm\native\MultiLanguageManager.UWP.pri" />
-    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-x64\native\MultiLanguageManager.UWP.dll" />
-    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-x64\native\MultiLanguageManager.UWP.pri" />
-    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.dll" target="runtimes\win10-x86\native\MultiLanguageManager.UWP.dll" />
-    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.pri" target="runtimes\win10-x86\native\MultiLanguageManager.UWP.pri" />
+    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.dll" target="lib\uap10.0\win10-arm\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\ARM\Release\MultiLanguageManager.UWP.pri" target="lib\uap10.0\win10-arm\MultiLanguageManager.UWP.pri" />
+    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.dll" target="lib\uap10.0\win10-x64\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\x64\Release\MultiLanguageManager.UWP.pri" target="lib\uap10.0\win10-x64\MultiLanguageManager.UWP.pri" />
+    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.dll" target="lib\uap10.0\win10-x86\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\x86\Release\MultiLanguageManager.UWP.pri" target="lib\uap10.0\win10-x86\MultiLanguageManager.UWP.pri" />
   </files>
 </package>
