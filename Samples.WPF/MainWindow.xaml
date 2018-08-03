@@ -41,20 +41,47 @@
                             <Run
                                 lan:Xaml.Key="red"
                                 FontStyle="Italic"
-                                Foreground="Red">
-                            </Run>
+                                Foreground="Red" />
                             <Run
                                 lan:Xaml.Key="blue"
                                 FontStyle="Normal"
-                                Foreground="Blue">
-                            </Run>
+                                Foreground="Blue" />
                             <Run FontStyle="Oblique" Foreground="Green">green</Run>
                         </lan:FormatParameters>
                     </lan:Xaml.Parameters>
                 </TextBlock>
+                <Button lan:Xaml.Key="txtBlock_format3">
+                    <lan:Xaml.Parameters>
+                        <lan:FormatParameters>
+                            <Run
+                                lan:Xaml.Key="red"
+                                FontStyle="Italic"
+                                Foreground="Red" />
+                            <Run
+                                lan:Xaml.Key="blue"
+                                FontStyle="Normal"
+                                Foreground="Blue" />
+                            <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                        </lan:FormatParameters>
+                    </lan:Xaml.Parameters>
+                </Button>
             </StackPanel>
         </TabItem>
         <TabItem lan:Xaml.Key="txt2" />
-        <TabItem lan:Xaml.Key="txt3" />
+        <TabItem lan:Xaml.Key="txtBlock_format3">
+            <lan:Xaml.Parameters>
+                <lan:FormatParameters>
+                    <Run
+                        lan:Xaml.Key="red"
+                        FontStyle="Italic"
+                        Foreground="Red" />
+                    <Run
+                        lan:Xaml.Key="blue"
+                        FontStyle="Normal"
+                        Foreground="Blue" />
+                    <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                </lan:FormatParameters>
+            </lan:Xaml.Parameters>
+        </TabItem>
     </TabControl>
 </Window>

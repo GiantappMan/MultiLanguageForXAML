@@ -190,7 +190,12 @@ namespace MultiLanguageManager
             if (targetProperty != null)
             {
                 //根据不同的类型有不同的赋值方式
-                if (IsSampeOrSubClass(element.GetType(), typeof(TextBlock)))
+                if (
+                    !IsSampeOrSubClass(element.GetType(), typeof(Window)) &&
+                    !IsSampeOrSubClass(element.GetType(), typeof(Page)) &&
+                    (IsSampeOrSubClass(element.GetType(), typeof(TextBlock)) ||
+                    IsSampeOrSubClass(element.GetType(), typeof(ContentControl))
+                    ))
                 {
                     var parameter = element.GetValue(ParametersProperty) as FormatParameters;
                     List<Run> runs = GetRuns(parameter, lan);
@@ -198,11 +203,51 @@ namespace MultiLanguageManager
                     if (runs != null && runs.Count > 0)
                     {
                         var tempTextBlock = element as TextBlock;
-                        tempTextBlock.Inlines.Clear();
-                        runs.ForEach((item) =>
+
+
+#if WINDOWS_UWP
+                        if (element is Hub)
+                        {
+                            tempTextBlock = new TextBlock();
+                            var tempHeaderContentControl = element as Hub;
+                            tempHeaderContentControl.Header = tempTextBlock;
+                        }
+                        else if (element is HubSection)
+                        {
+                            tempTextBlock = new TextBlock();
+                            var tempHeaderContentControl = element as HubSection;
+                            tempHeaderContentControl.Header = tempTextBlock;
+                        }
+                        else if (element is PivotItem)
+                        {
+                            tempTextBlock = new TextBlock();
+                            var tempHeaderContentControl = element as PivotItem;
+                            tempHeaderContentControl.Header = tempTextBlock;
+                        }
+#else
+                        if (element is HeaderedContentControl)
+                        {
+                            tempTextBlock = new TextBlock();
+                            var tempHeaderContentControl = element as HeaderedContentControl;
+                            tempHeaderContentControl.Header = tempTextBlock;
+                        }
+#endif
+
+                        else if (element is ContentControl)
+                        {
+                            tempTextBlock = new TextBlock();
+                            var tempContentControl = element as ContentControl;
+                            tempContentControl.Content = tempTextBlock;
+                        }
+
+                        if (tempTextBlock != null)
+                        {
+                            tempTextBlock.Inlines.Clear();
+                            runs.ForEach((item) =>
                             {
                                 tempTextBlock.Inlines.Add(item);
                             });
+                        }
                     }
                 }
                 else

@@ -57,6 +57,20 @@
             </HubSection.ContentTemplate>
         </HubSection>
         <HubSection lan:Xaml.Key="txt2" />
-        <HubSection lan:Xaml.Key="txt3" />
+        <HubSection lan:Xaml.Key="txt3">
+            <lan:Xaml.Parameters>
+                <lan:FormatParameters>
+                    <Run
+                        lan:Xaml.Key="red"
+                        FontStyle="Italic"
+                        Foreground="Red" />
+                    <Run
+                        lan:Xaml.Key="blue"
+                        FontStyle="Normal"
+                        Foreground="Blue" />
+                    <Run FontStyle="Oblique" Foreground="Green">green</Run>
+                </lan:FormatParameters>
+            </lan:Xaml.Parameters>
+        </HubSection>
     </Hub>
 </Page>
