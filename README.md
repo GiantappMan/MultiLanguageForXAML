@@ -16,8 +16,8 @@
 ## 用法
 
 * **定义语言文件**
- ```Languages/json 编译时拷贝到目录
-  //zh.json
+ ```
+  //Languages/zh.json 编译时拷贝到目录
     {
     "txt": "一",
     "format":"你好 {0} !",
