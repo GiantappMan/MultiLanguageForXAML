@@ -16,7 +16,7 @@
 ## 用法
 
 * **定义语言文件**
- ```json
+ ```Languages/json 编译时拷贝到目录
   //zh.json
     {
     "txt": "一",
@@ -24,7 +24,7 @@
     "world":"世界"
     }
 
-//en.json
+//Languages/en.json 编译时拷贝到目录
     {
     "txt": "one",
     "format":"hello {0} !",
