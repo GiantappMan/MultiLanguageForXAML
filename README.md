@@ -16,15 +16,15 @@
 ## 用法
 
 * **定义语言文件**
- ```json
-  //zh.json
+ ```
+  //Languages/zh.json 编译时拷贝到目录
     {
     "txt": "一",
     "format":"你好 {0} !",
     "world":"世界"
     }
 
-//en.json
+//Languages/en.json 编译时拷贝到目录
     {
     "txt": "one",
     "format":"hello {0} !",
