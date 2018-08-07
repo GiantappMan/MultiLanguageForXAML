@@ -59,6 +59,24 @@ namespace MultiLanguageManager
 
         public static Dictionary<Type, DependencyProperty> CustomMaps { private set; get; } = new Dictionary<Type, DependencyProperty>();
 
+        #region ApplyImmediately
+
+        public static bool GetApplyImmediately(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(ApplyImmediatelyProperty);
+        }
+
+        public static void SetApplyImmediately(DependencyObject obj, bool value)
+        {
+            obj.SetValue(ApplyImmediatelyProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for ApplyImmediately.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ApplyImmediatelyProperty =
+            DependencyProperty.RegisterAttached("ApplyImmediately", typeof(bool), typeof(Xaml), new PropertyMetadata(false));
+
+        #endregion
+
         #region Key
 
         public static string GetKey(DependencyObject obj)
@@ -80,12 +98,18 @@ namespace MultiLanguageManager
                         if (isInDesignMode)
                             return;
 
-                        //不支持Run，因为WPF和UWP兼容有点恼火
+                        //Run需要特殊处理，因为WPF和UWP兼容有点恼火
                         if (sender is FrameworkElement)
                         {
                             FrameworkElement element = sender as FrameworkElement;
                             if (element != null)
-                                element.Loaded += Element_Loaded;
+                            {
+                                bool immediately = GetApplyImmediately(element);
+                                if (immediately)
+                                    await ApplyFrameworkElement(element);
+                                else
+                                    element.Loaded += Element_Loaded;
+                            }
                         }
                         else if (sender is Run)
                         {
@@ -106,16 +130,17 @@ namespace MultiLanguageManager
             FrameworkElement element = sender as FrameworkElement;
             element.Loaded -= Element_Loaded;
 
-            var key = element.GetValue(KeyProperty);
-            if (key != null)
-            {
-                bool ok = await ApplyLanguage(element, key.ToString());
+            await ApplyFrameworkElement(element);
+            //var key = element.GetValue(KeyProperty);
+            //if (key != null)
+            //{
+            //    bool ok = await ApplyLanguage(element, key.ToString());
 
-                if (ok && LanService.CanHotUpdate)
-                {
-                    _referencesElements.Add(new WeakReference<FrameworkElement>(element));
-                }
-            }
+            //    if (ok && LanService.CanHotUpdate)
+            //    {
+            //        _referencesElements.Add(new WeakReference<FrameworkElement>(element));
+            //    }
+            //}
         }
 
         #endregion
@@ -181,6 +206,20 @@ namespace MultiLanguageManager
                 }
 
                 _referencesRuns = newList;
+            }
+        }
+
+        private static async Task ApplyFrameworkElement(DependencyObject element)
+        {
+            var key = element.GetValue(KeyProperty);
+            if (key != null)
+            {
+                bool ok = await ApplyLanguage(element, key.ToString());
+
+                if (ok && LanService.CanHotUpdate)
+                {
+                    _referencesElements.Add(new WeakReference<FrameworkElement>(element as FrameworkElement));
+                }
             }
         }
 
