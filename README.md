@@ -35,7 +35,9 @@
 * **初始化**
 ```csharp
             //WPF
-            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
+            //不能用Environment.CurrentDirectory，开机启动目录会出错
+            string appDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            string path = Path.Combine(appDir, "Res\\Languages");
             LanService.Init(new JsonDB(path), true);
             
             //UWP
