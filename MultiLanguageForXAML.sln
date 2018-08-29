@@ -15,6 +15,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MultiLanguageManager", "Mul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLanguageManager.UWP", "MultiLanguageManager.UWP\MultiLanguageManager.UWP.csproj", "{F4182127-CAD5-41BF-879D-3863D558B43E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{06B1FF62-175B-4C1A-BC5F-2D1804DA4E61}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\MultiLanguageForXAML.nuspec = NuGet\MultiLanguageForXAML.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MultiLanguageManager\MultiLanguageManager.projitems*{03f177a7-cb0c-4ecc-a9eb-29d233e7adc2}*SharedItemsImports = 13

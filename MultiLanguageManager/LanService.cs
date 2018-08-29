@@ -51,6 +51,8 @@ namespace MultiLanguageManager
 
         public static async Task<string> Get(string key, string cultureName)
         {
+            if (_db == null)
+                throw new NullReferenceException("Language database has not been initialized");
             var r = await _db.Get(key, cultureName);
             return r;
         }
