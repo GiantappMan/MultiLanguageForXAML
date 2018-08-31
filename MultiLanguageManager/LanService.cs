@@ -17,6 +17,7 @@ namespace MultiLanguageManager
         static IDataBase _db;
         static string _currentCulture;
         static bool _canHotUpdate;
+        static string _defaultLan;
 
         public static bool CanHotUpdate { get => _canHotUpdate; }
 
@@ -25,8 +26,9 @@ namespace MultiLanguageManager
         /// </summary>
         /// <param name="db">数据库</param>
         /// <param name="hotUpdate">是否支持热更新，true会有一定性能开销</param>
-        public static void Init(IDataBase db, bool hotUpdate = false)
+        public static void Init(IDataBase db, bool hotUpdate = false, string defaultLan = null)
         {
+            _defaultLan = defaultLan;
             _canHotUpdate = hotUpdate;
             _db = db;
             _currentCulture = GetCultureName();
@@ -53,8 +55,16 @@ namespace MultiLanguageManager
         {
             if (_db == null)
                 throw new NullReferenceException("Language database has not been initialized");
-            var r = await _db.Get(key, cultureName);
-            return r;
+            try
+            {
+                var r = await _db.Get(key, cultureName);
+                return r;
+            }
+            catch (Exception)
+            {
+                var r = await _db.Get(key, _defaultLan);
+                return r;
+            }
         }
 
         private static string GetCultureName()
