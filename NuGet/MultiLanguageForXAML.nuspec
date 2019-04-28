@@ -28,9 +28,9 @@
     </dependencies>
   </metadata>
   <files>
-    <!--<file src="..\MultiLanguageManager.WPF\bin\Debug\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" />
-    <file src="..\MultiLanguageManager.UWP\bin\Debug\MultiLanguageManager.UWP.dll" target="lib\uap10.0\MultiLanguageManager.UWP.dll" />-->
-    <file src="..\MultiLanguageManager.WPF\bin\Release\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" />
-    <file src="..\MultiLanguageManager.UWP\bin\Release\MultiLanguageManager.UWP.dll" target="lib\uap10.0\MultiLanguageManager.UWP.dll" />
+    <file src="..\MultiLanguageManager.WPF\bin\Debug\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\Debug\MultiLanguageManager.UWP.dll" target="lib\uap10.0\MultiLanguageManager.UWP.dll" />
+    <!--<file src="..\MultiLanguageManager.WPF\bin\Release\MultiLanguageManager.WPF.dll" target="lib\net46\MultiLanguageManager.WPF.dll" />
+    <file src="..\MultiLanguageManager.UWP\bin\Release\MultiLanguageManager.UWP.dll" target="lib\uap10.0\MultiLanguageManager.UWP.dll" />-->
   </files>
 </package>
