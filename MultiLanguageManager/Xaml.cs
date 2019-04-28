@@ -117,7 +117,7 @@ namespace MultiLanguageManager
                             var key = run.GetValue(KeyProperty);
                             if (key != null)
                             {
-                                bool ok = await ApplyLanguage(run, key.ToString());
+                                bool ok = await ApplyLanguage(run, key.ToString(), (bool)run.GetValue(ToolTipProperty));
 
                                 if (ok && LanService.CanHotUpdate)
                                     _referencesRuns.Add(new WeakReference<Run>(run));
@@ -163,6 +163,24 @@ namespace MultiLanguageManager
 
         #endregion
 
+        #region ToolTip
+
+        public static bool GetToolTip(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(ToolTipProperty);
+        }
+
+        public static void SetToolTip(DependencyObject obj, bool value)
+        {
+            obj.SetValue(ToolTipProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for ApplyTooltip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ToolTipProperty =
+            DependencyProperty.RegisterAttached("ToolTip", typeof(bool), typeof(Xaml), new PropertyMetadata(false));
+
+        #endregion
+
         #region methods
 
         internal static async Task UpdateLanguage()
@@ -182,7 +200,7 @@ namespace MultiLanguageManager
 
                     var key = element.GetValue(KeyProperty);
                     if (key != null)
-                        await ApplyLanguage(element, key.ToString());
+                        await ApplyLanguage(element, key.ToString(), (bool)element.GetValue(ToolTipProperty));
                 }
 
                 _referencesElements = newList;
@@ -202,7 +220,7 @@ namespace MultiLanguageManager
 
                     var key = element.GetValue(KeyProperty);
                     if (key != null)
-                        await ApplyLanguage(element, key.ToString());
+                        await ApplyLanguage(element, key.ToString(), (bool)element.GetValue(ToolTipProperty));
                 }
 
                 _referencesRuns = newList;
@@ -214,7 +232,7 @@ namespace MultiLanguageManager
             var key = element.GetValue(KeyProperty);
             if (key != null)
             {
-                bool ok = await ApplyLanguage(element, key.ToString());
+                bool ok = await ApplyLanguage(element, key.ToString(), (bool)element.GetValue(ToolTipProperty));
 
                 if (ok && LanService.CanHotUpdate)
                 {
@@ -224,13 +242,16 @@ namespace MultiLanguageManager
         }
 
         //应用一个控件的语言
-        private static async Task<bool> ApplyLanguage(DependencyObject element, string key)
+        private static async Task<bool> ApplyLanguage(DependencyObject element, string key, bool applyTooltips)
         {
             var lan = await LanService.Get(key);
             DependencyProperty targetProperty = MapProperty(element);
 
             if (targetProperty != null)
             {
+                if (applyTooltips)
+                    element.SetValue(ToolTipService.ToolTipProperty, lan);
+
                 var parameter = element.GetValue(ParametersProperty) as FormatParameters;
 
                 //需要格式化字符串
@@ -302,6 +323,9 @@ namespace MultiLanguageManager
             {//run特殊处理
                 Run run = element as Run;
                 run.Text = lan;
+                if (applyTooltips)
+                    run.SetValue(ToolTipService.ToolTipProperty, lan);
+
                 return true;
             }
 

@@ -20,7 +20,7 @@
                     <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
                     <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
                 </ComboBox>
-                <CheckBox lan:Xaml.Key="chk" />
+                <CheckBox lan:Xaml.Key="chk" lan:Xaml.ToolTip="True" />
                 <Expander lan:Xaml.Key="expander" />
                 <Label lan:Xaml.Key="label" />
                 <MenuItem lan:Xaml.Key="menuItem" Header="test" />
