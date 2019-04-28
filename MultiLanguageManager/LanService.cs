@@ -55,16 +55,20 @@ namespace MultiLanguageManager
         {
             if (_db == null)
                 throw new NullReferenceException("Language database has not been initialized");
+            string r = null;
             try
             {
-                var r = await _db.Get(key, cultureName);
-                return r;
+                r = await _db.Get(key, cultureName);
+                if (!string.IsNullOrEmpty(r))
+                    return r;
             }
             catch (Exception)
             {
-                var r = await _db.Get(key, _defaultLan);
-                return r;
             }
+
+            //出现异常或者没有多语言，使用默认语言
+            r = await _db.Get(key, _defaultLan);
+            return r;
         }
 
         private static string GetCultureName()

@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>MultiLanguageForXAML</id>
-    <version>1.0.0.18</version>
+    <version>1.0.0.20</version>
     <title>MultiLanguageForXAML</title>
     <authors>MscoderStudio</authors>
     <owners>MscoderStudio</owners>
