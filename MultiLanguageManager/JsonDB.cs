@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiLanguageManager
+namespace MultiLanguageForXAML
 {
     public class JsonDB : IDataBase
     {

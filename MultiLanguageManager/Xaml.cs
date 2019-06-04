@@ -22,7 +22,7 @@ using System.Windows.Documents;
 
 
 
-namespace MultiLanguageManager
+namespace MultiLanguageForXAML
 {
     public class FormatParameters : Collection<object>
     {

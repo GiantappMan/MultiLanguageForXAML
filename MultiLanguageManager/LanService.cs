@@ -10,7 +10,7 @@ using Windows.Globalization;
 
 #endif
 
-namespace MultiLanguageManager
+namespace MultiLanguageForXAML
 {
     public class LanService
     {
