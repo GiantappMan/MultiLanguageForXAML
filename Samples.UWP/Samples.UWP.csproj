@@ -145,6 +145,10 @@
       <Project>{240be8db-abc1-489f-acc4-11dba20641fb}</Project>
       <Name>MultiLanguageManager.UWP</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MultiLanguageManager\MultiLanguageForXAML.csproj">
+      <Project>{92124a53-b6f7-4a7e-8854-d1a0ec748194}</Project>
+      <Name>MultiLanguageForXAML</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

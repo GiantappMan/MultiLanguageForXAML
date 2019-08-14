@@ -1,7 +1,6 @@
 # MultiLanguageForXAML
-针对WPF和UWP的通用多语言支持库
+针对WPF/WPF Core和UWP的通用多语言支持库
 
-UWP 目前编译不了，为了兼容.net core wpf暂时放弃UWP
 ## [Nuget](https://www.nuget.org/packages/MultiLanguageForXAML/)
 
 ## 效果预览

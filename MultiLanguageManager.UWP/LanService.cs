@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
-#if WINDOWS_UWP
 using Windows.Globalization;
 
-#else
-
-#endif
 
 namespace MultiLanguageForXAML
 {
@@ -74,18 +68,13 @@ namespace MultiLanguageForXAML
         private static string GetCultureName()
         {
             string result = null;
-#if WINDOWS_UWP
-          
             result = ApplicationLanguages.PrimaryLanguageOverride;
             if (string.IsNullOrEmpty(result))
             {
                 var topUserLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-                var language = new Windows.Globalization.Language(topUserLanguage);
+                var language = new Language(topUserLanguage);
                 result = language.LanguageTag;
             }
-#else
-            result = Thread.CurrentThread.CurrentUICulture.Name;
-#endif
             return result;
         }
     }

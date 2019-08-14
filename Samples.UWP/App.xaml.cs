@@ -32,8 +32,7 @@ namespace Samples.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-
+            
             string path = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Languages");
             LanService.Init(new JsonDB(path), true);
         }
