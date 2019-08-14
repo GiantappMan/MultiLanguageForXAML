@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>net47;netcoreapp3.0</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiLanguageForXAML.WPFCore\MultiLanguageForXAML.WPFCore.csproj" />
+    <ProjectReference Include="..\MultiLanguageForXAML.WPF\MultiLanguageForXAML.WPF.csproj" />
   </ItemGroup>
 
   <ItemGroup>
