@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="..\MultiLanguageManager.WPF\obj\Debug\**" />
+    <Compile Remove="..\MultiLanguageManager.WPF\obj\**" />
     <Compile Remove="obj\**" />
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
