@@ -6,6 +6,14 @@
     <Version>2.0.1</Version>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Page Include="..\MultiLanguageManager.WPF\**\*.xaml">
       <SubType>Designer</SubType>
