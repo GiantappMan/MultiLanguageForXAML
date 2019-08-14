@@ -23,6 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageForXAML.WPFCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{7A6FD990-7E29-44DC-9655-EAC5D7AB2C42}"
 	ProjectSection(SolutionItems) = preProject
+		docs\build.md = docs\build.md
 		README.md = README.md
 	EndProjectSection
 EndProject
