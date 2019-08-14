@@ -17,11 +17,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{06B1FF62
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageForXAML", "MultiLanguageManager\MultiLanguageForXAML.csproj", "{92124A53-B6F7-4A7E-8854-D1A0EC748194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLanguageManager.WPF", "MultiLanguageManager.WPF\MultiLanguageManager.WPF.csproj", "{B6B604AF-CAC2-42D8-AD50-A464BE32CEB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageManager.WPF", "MultiLanguageManager.WPF\MultiLanguageManager.WPF.csproj", "{B6B604AF-CAC2-42D8-AD50-A464BE32CEB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageManager.UWP", "MultiLanguageManager.UWP\MultiLanguageManager.UWP.csproj", "{240BE8DB-ABC1-489F-ACC4-11DBA20641FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLanguageManager.WPFCore", "MultiLanguageManager.WPFCore\MultiLanguageManager.WPFCore.csproj", "{2609969A-BBCD-495C-951A-DDD36A8094B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageManager.WPFCore", "MultiLanguageManager.WPFCore\MultiLanguageManager.WPFCore.csproj", "{2609969A-BBCD-495C-951A-DDD36A8094B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{7A6FD990-7E29-44DC-9655-EAC5D7AB2C42}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,12 +2,10 @@
     x:Class="Samples.WPF.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:collection="clr-namespace:System.Collections;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lan="clr-namespace:MultiLanguageForXAML;assembly=MultiLanguageManager.WPFCore"
-    xmlns:local="clr-namespace:Samples.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:sys1="clr-namespace:System;assembly=System.Runtime"
     Width="800"
     Height="450"
     lan:Xaml.Key="title"
@@ -30,7 +28,7 @@
                 <TextBlock lan:Xaml.Key="txtBlock_format2">
                     <lan:Xaml.Parameters>
                         <lan:FormatParameters>
-                            <sys:String>1</sys:String>
+                            <sys1:String>1</sys1:String>
                             <Run FontStyle="Oblique" Foreground="Green">green</Run>
                         </lan:FormatParameters>
                     </lan:Xaml.Parameters>
