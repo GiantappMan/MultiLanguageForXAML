@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:collection="clr-namespace:System.Collections;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:lan="clr-namespace:MultiLanguageForXAML;assembly=MultiLanguageForXAML"
+    xmlns:lan="clr-namespace:MultiLanguageForXAML;assembly=MultiLanguageManager.WPFCore"
     xmlns:local="clr-namespace:Samples.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
