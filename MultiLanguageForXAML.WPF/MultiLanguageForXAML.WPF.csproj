@@ -3,18 +3,20 @@
   <PropertyGroup>
     <TargetFramework>net47</TargetFramework>
     <Version>2.0.1</Version>
+    <AssemblyName>MultiLanguageForXAML</AssemblyName>
+    <RootNamespace>MultiLanguageForXAML</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output\</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiLanguageManager\MultiLanguageForXAML.csproj" />
+    <ProjectReference Include="..\MultiLanguageForXAML\MultiLanguageForXAML.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiLanguageManager.WPFCore\MultiLanguageManager.WPFCore.csproj" />
+    <ProjectReference Include="..\MultiLanguageForXAML.WPFCore\MultiLanguageForXAML.WPFCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

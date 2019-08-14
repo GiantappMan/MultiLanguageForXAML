@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>MultiLanguageForXAML</id>
-    <version>2.0.1.2</version>
+    <version>2.0.2.2</version>
     <title>MultiLanguageForXAML</title>
     <authors>MscoderStudio</authors>
     <owners>MscoderStudio</owners>
@@ -12,14 +12,14 @@
     <projectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</projectUrl>
     <description>
       Multi-Language support For WPF/UWP.
-      简单易用的WPF多语言切换框架。
+      简单易用的WPF/UWP多语言切换框架。
       分分钟上手
     </description>
     <summary>Multi-Language support For WPF/UWP</summary>
     <copyright>MscoderStudio</copyright>
     <tags>UWP WPF XAML</tags>
     <dependencies>
-      <group targetFramework="net46">
+      <group targetFramework="net47">
         <dependency id="Newtonsoft.Json" version="11.0.2" />
       </group>
       <group targetFramework="uap10.0">
@@ -29,13 +29,13 @@
   </metadata>
   <files>
     <file src="..\Output\net47\MultiLanguageForXAML.dll" target="lib\net47\MultiLanguageForXAML.dll" />
-    <file src="..\Output\net47\MultiLanguageForXAML.WPF.dll" target="lib\net47\MultiLanguageForXAML.WPF.dll" />
+    <file src="..\Output\net47\MultiLanguageForXAML.Common.dll" target="lib\net47\MultiLanguageForXAML.Common.dll" />
     
-    <file src="..\Output\uap\MultiLanguageForXAML.dll" target="lib\uap10.0\MultiLanguageForXAML.dll" />
-    <file src="..\Output\uap\MultiLanguageForXAML.WPF.dll" target="lib\uap10.0\MultiLanguageForXAML.WPF.dll" />
+    <file src="..\Output\uap10.0\MultiLanguageForXAML.dll" target="lib\uap10.0\MultiLanguageForXAML.dll" />
+    <file src="..\Output\uap10.0\MultiLanguageForXAML.Common.dll" target="lib\uap10.0\MultiLanguageForXAML.Common.dll" />
 
     <file src="..\Output\netcoreapp3.0\MultiLanguageForXAML.dll" target="lib\netcoreapp3.0\MultiLanguageForXAML.dll" />
-    <file src="..\Output\netcoreapp3.0\MultiLanguageForXAML.WPF.dll" target="lib\netcoreapp3.0\MultiLanguageForXAML.WPF.dll" />
+    <file src="..\Output\netcoreapp3.0\MultiLanguageForXAML.Common.dll" target="lib\netcoreapp3.0\MultiLanguageForXAML.Common.dll" />
     
   </files>
 </package>

@@ -4,26 +4,28 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <Version>2.0.1</Version>
+    <RootNamespace>MultiLanguageForXAML</RootNamespace>
+    <AssemblyName>MultiLanguageForXAML</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>D:\github-categorized\dotnet\MultiLanguageForXAML\Output\</OutputPath>
+    <OutputPath>..\Output\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <Page Include="..\MultiLanguageManager.WPF\**\*.xaml">
+    <Page Include="..\MultiLanguageForXAML.WPF\**\*.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
-    <Compile Include="..\MultiLanguageManager.WPF\**\*.cs" />
+    <Compile Include="..\MultiLanguageForXAML.WPF\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="..\MultiLanguageManager.WPF\obj\**" />
+    <Compile Remove="..\MultiLanguageForXAML.WPF\obj\**" />
     <Compile Remove="obj\**" />
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
@@ -31,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiLanguageManager\MultiLanguageForXAML.csproj" />
+    <ProjectReference Include="..\MultiLanguageForXAML\MultiLanguageForXAML.Common.csproj" />
   </ItemGroup>
  
 </Project>
