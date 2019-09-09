@@ -7,5 +7,5 @@
 
 
  π”√vs
-dotnet pack MultiLanguageForXAML.WPF -o ../LocalNuget/Packages
-dotnet pack MultiLanguageForXAML.UWP -o ../LocalNuget/Packages
+dotnet pack MultiLanguageForXAML.WPF -o ../LocalNuget/Packages -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+dotnet pack MultiLanguageForXAML.UWP -o ../LocalNuget/Packages -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg

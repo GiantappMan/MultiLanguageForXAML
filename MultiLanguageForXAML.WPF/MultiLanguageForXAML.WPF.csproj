@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net47;netcoreapp3.0</TargetFrameworks>
     <UseWPF>true</UseWPF>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
   </PropertyGroup>
