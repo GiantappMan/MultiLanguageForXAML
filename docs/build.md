@@ -6,6 +6,6 @@
 * 运行Nuget/create-packages.cmd
 
 
-使用vs
+使用命令打包，uwp暂时不行
 dotnet pack MultiLanguageForXAML.WPF -o ../LocalNuget/Packages -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
 dotnet pack MultiLanguageForXAML.UWP -o ../LocalNuget/Packages -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
