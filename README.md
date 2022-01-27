@@ -1,5 +1,5 @@
 # MultiLanguageForXAML
-针对WPF/WPF Core和UWP的通用多语言支持库
+针对WPF的多语言支持库
 
 ## [Nuget](https://www.nuget.org/packages/MultiLanguageForXAML/)
 
@@ -8,10 +8,6 @@
 
 ![steup](https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/screenshots/WPF.gif)
 
-
-* **UWP**
-
-![steup](https://github.com/DaZiYuan/MultiLanguageForXAML/blob/master/screenshots/UWP.gif?raw=true)
 
 ## 用法
 
@@ -38,10 +34,6 @@
             //怀疑用Environment.CurrentDirectory开机启动时目录会出错，待验证
             string appDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             string path = Path.Combine(appDir, "Res\\Languages");
-            LanService.Init(new JsonDB(path), true);
-            
-            //UWP
-            string path = Path.Combine(Windows.ApplicationModel.Package.Current.InstalledLocation.Path, "Languages");
             LanService.Init(new JsonDB(path), true);
 ```
 
@@ -71,10 +63,6 @@
 ```csharp
             //WPF
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureName);
-            await LanService.UpdateLanguage();
-            
-            //UWP
-            ApplicationLanguages.PrimaryLanguageOverride = CultureName;
             await LanService.UpdateLanguage();
 ```
 

@@ -11,13 +11,13 @@
     <licenseUrl>https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</projectUrl>
     <description>
-      Multi-Language support For WPF/UWP.
+      Multi-Language support For WPF.
       简单易用的WPF/UWP多语言切换框架。
       分分钟上手
     </description>
     <summary>Multi-Language support For WPF/UWP</summary>
     <copyright>MscoderStudio</copyright>
-    <tags>UWP WPF XAML</tags>
+    <tags>WPF XAML</tags>
     <dependencies>
       <group targetFramework="net47">
         <dependency id="MultiLanguageForXAML.Common" version="1.0.1" />
