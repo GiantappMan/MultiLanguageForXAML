@@ -15,13 +15,14 @@
 - **定义语言文件**  
 
 ```
-//Languages/\*.json 编译时拷贝到目录
+//Languages/zh.json 编译时拷贝到目录
     {
     "txt": "一",
     "format":"你好 {0} !",
     "world":"世界"
     }
 
+//Languages/en.json 编译时拷贝到目录
     {
     "txt": "one",
     "format":"hello {0} !",
