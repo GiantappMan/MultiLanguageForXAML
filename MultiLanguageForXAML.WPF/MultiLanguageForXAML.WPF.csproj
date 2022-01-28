@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>2.1.3</Version>
+    <Version>2.1.5</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>

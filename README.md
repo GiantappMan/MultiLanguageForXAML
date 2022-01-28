@@ -42,7 +42,7 @@
 
 <Window
     ...
-    xmlns:lan="clr-namespace:MultiLanguageManager;assembly=MultiLanguageManager.WPF">
+    xmlns:lan="clr-namespace:MultiLanguageForXAML;assembly=MultiLanguageForXAML">
     <StackPanel>
         <Button lan:Xaml.Key="txt" />
         <Button lan:Xaml.Key="format">

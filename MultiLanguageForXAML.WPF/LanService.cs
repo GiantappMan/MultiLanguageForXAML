@@ -11,6 +11,7 @@ namespace MultiLanguageForXAML
         static string? _defaultLan;
 
         public static bool CanHotUpdate { get => _canHotUpdate; }
+        public static Exception? LastError { get; private set; }
 
         /// <summary>
         /// 初始化
@@ -55,8 +56,9 @@ namespace MultiLanguageForXAML
                 if (!string.IsNullOrEmpty(r))
                     return r;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LastError = ex;
             }
 
             if (_defaultLan == null)
