@@ -3,16 +3,11 @@
   <PropertyGroup>
 	<TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>2.1.0</Version>
+    <Version>2.1.3</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>
     <PackageProjectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</PackageProjectUrl>
 	<Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MultiLanguageForXAML\MultiLanguageForXAML.Common.csproj" />
-  </ItemGroup>
-
 </Project>
