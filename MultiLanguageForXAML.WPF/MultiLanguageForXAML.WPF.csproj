@@ -3,11 +3,22 @@
   <PropertyGroup>
 	<TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>2.1.5</Version>
+    <Version>2.1.6</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>
     <PackageProjectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</PackageProjectUrl>
 	<Nullable>enable</Nullable>
+	<Copyright>https://raw.githubusercontent.com/DaZiYuan/MultiLanguageForXAML/master/LICENSE</Copyright>
+	<Description>Multilanguage support for WPF </Description>
+	<Authors>DaZiYuan</Authors>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>
