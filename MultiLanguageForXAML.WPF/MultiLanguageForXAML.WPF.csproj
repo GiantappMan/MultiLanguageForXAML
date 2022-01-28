@@ -7,6 +7,8 @@
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>
+    <PackageProjectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</PackageProjectUrl>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

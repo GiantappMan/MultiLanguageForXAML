@@ -13,8 +13,8 @@
     <TabControl>
         <TabItem lan:Xaml.Key="txt">
             <StackPanel x:Name="stcPanel">
-                <Button lan:Xaml.Key="btn_readInCode" Click="btnReadInCode_Click" />
-                <ComboBox SelectedIndex="0" SelectionChanged="cb_SelectionChanged">
+                <Button lan:Xaml.Key="btn_readInCode" Click="BtnReadInCode_Click" />
+                <ComboBox SelectedIndex="0" SelectionChanged="Cb_SelectionChanged">
                     <ComboBoxItem lan:Xaml.Key="zh" Tag="zh" />
                     <ComboBoxItem lan:Xaml.Key="en" Tag="en" />
                 </ComboBox>

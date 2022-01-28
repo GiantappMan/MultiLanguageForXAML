@@ -12,10 +12,10 @@
     <projectUrl>https://github.com/DaZiYuan/MultiLanguageForXAML</projectUrl>
     <description>
       Multi-Language support For WPF.
-      简单易用的WPF/UWP多语言切换框架。
+      简单易用的WPF多语言切换框架。
       分分钟上手
     </description>
-    <summary>Multi-Language support For WPF/UWP</summary>
+    <summary>Multi-Language support For WPF</summary>
     <copyright>MscoderStudio</copyright>
     <tags>WPF XAML</tags>
     <dependencies>

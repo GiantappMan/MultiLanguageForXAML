@@ -7,6 +7,6 @@ namespace MultiLanguageForXAML
 {
     public interface IDataBase
     {
-        Task<string> Get(string key, string cultureName);
+        string? Get(string key, string cultureName);
     }
 }

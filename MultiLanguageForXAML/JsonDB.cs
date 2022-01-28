@@ -1,16 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MultiLanguageForXAML
 {
     public class JsonDB : IDataBase
     {
-        private string jsonDir;
-        private Dictionary<string, dynamic> dataDict = new Dictionary<string, dynamic>();
+        private readonly string? jsonDir;
+        private readonly Dictionary<string, JsonElement> dataDict = new();
 
         public JsonDB()
         {
@@ -22,8 +21,11 @@ namespace MultiLanguageForXAML
             this.jsonDir = jsonDir;
         }
 
-        public Task<string> Get(string key, string cultureName)
+        public string? Get(string key, string cultureName)
         {
+            if (jsonDir == null)
+                return null;
+
             if (!dataDict.ContainsKey(cultureName))
             {
                 var files = Directory.GetFiles(jsonDir, $"{cultureName}.json");
@@ -39,12 +41,12 @@ namespace MultiLanguageForXAML
                     return null;
 
                 string json = File.ReadAllText(files[0]);
-                var data = JsonConvert.DeserializeObject<dynamic>(json);
+                JsonElement data = JsonSerializer.Deserialize<JsonElement>(json);
                 dataDict.Add(cultureName, data);
             }
 
-            string result = dataDict[cultureName][key];
-            return Task.FromResult(result);
+            string? result = dataDict[cultureName].GetProperty(key).GetString();
+            return result;
         }
     }
 }
