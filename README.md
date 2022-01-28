@@ -63,7 +63,7 @@
 ```csharp
             //WPF
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureName);
-            await LanService.UpdateLanguage();
+            LanService.UpdateLanguage();
 ```
 
 ## QQ群交流:
