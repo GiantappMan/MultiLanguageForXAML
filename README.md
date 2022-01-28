@@ -76,7 +76,7 @@ LanService.UpdateLanguage();
 - **自定义控件映射（可选）**
 
 ```csharp
-Xaml.CustomMaps.Add(typeof(CustomTitleBar), TitleBar.TitleProperty);
+Xaml.CustomMaps.Add(typeof(CustomTitleBar), CustomTitleBar.TitleProperty);
 
 ```
 
