@@ -12,7 +12,7 @@
 
 ## 用法
 
-- **定义语言文件**  
+- **定义语言文件**
 
 ```
 //Languages/zh.json 编译时拷贝到目录
@@ -38,7 +38,7 @@
 //怀疑用Environment.CurrentDirectory开机启动时目录会出错，待验证
 string appDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 string path = Path.Combine(appDir, "Res\\Languages");
-LanService.Init(new JsonDB(path), true);
+LanService.Init(new JsonDB(path), true,"zh");
 ```
 
 - **XAML**
@@ -69,8 +69,7 @@ LanService.Init(new JsonDB(path), true);
 
 ```csharp
 //WPF
-Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureName);
-LanService.UpdateLanguage();
+LanService.UpdateCulture("en");
 ```
 
 - **自定义控件映射（可选）**
@@ -80,6 +79,6 @@ Xaml.CustomMaps.Add(typeof(CustomTitleBar), CustomTitleBar.TitleProperty);
 
 ```
 
-## QQ 群交流:
+[应用推荐](https://giantapp.cn/categories/products)
 
 C#全栈开发：191034956

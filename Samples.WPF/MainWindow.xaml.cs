@@ -25,25 +25,23 @@ namespace Samples.WPF
         public MainWindow()
         {
             string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
-            LanService.Init(new JsonDB(path), true);
+            LanService.Init(new JsonDB(path), true,"en");
             InitializeComponent();
+            CB.SelectionChanged += CB_SelectionChanged;
         }
 
         private void BtnReadInCode_Click(object sender, RoutedEventArgs e)
         {
             var l = LanService.Get("btn_readInCode");
             MessageBox.Show(l);
-            Button btn = sender as Button;
-            stcPanel.Children.Remove(btn);
         }
 
-        private void Cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem item = e.AddedItems[0] as ComboBoxItem;
-            string culture = item.Tag as string;
+            ComboBoxItem? item = e.AddedItems[0] as ComboBoxItem;
+            string? culture = item?.Tag as string;
 
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
-            LanService.UpdateLanguage();
+            LanService.UpdateCulture(culture);
         }
     }
 }

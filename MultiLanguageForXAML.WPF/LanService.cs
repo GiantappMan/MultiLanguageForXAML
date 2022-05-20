@@ -8,7 +8,7 @@ namespace MultiLanguageForXAML
         static IDataBase? _db;
         static string? _currentCulture;
         static bool _canHotUpdate;
-        static string? _defaultLan;
+        static string? _defaultCulture;
 
         public static bool CanHotUpdate { get => _canHotUpdate; }
         public static Exception? LastError { get; private set; }
@@ -18,23 +18,25 @@ namespace MultiLanguageForXAML
         /// </summary>
         /// <param name="db">数据库</param>
         /// <param name="hotUpdate">是否支持热更新，true会有一定性能开销</param>
-        public static void Init(IDataBase db, bool hotUpdate = false, string? defaultLan = null)
+        /// <param name="currentCulture">当前多语言</param>
+        /// <param name="defaultCulture">当目标多语言不存在时，使用的默认Culture</param>
+        public static void Init(IDataBase db, bool hotUpdate = false, string? currentCulture = null, string? defaultCulture = null)
         {
-            _defaultLan = defaultLan;
+            _defaultCulture = defaultCulture;
             _canHotUpdate = hotUpdate;
             _db = db;
-            _currentCulture = GetCultureName();
+            _currentCulture = currentCulture ?? GetCurrentUICulture();
         }
 
         /// <summary>
-        /// 修改Culture后重新调用，刷新
+        /// 修改多语言
         /// </summary>
-        public static void UpdateLanguage()
+        public static void UpdateCulture(string? culture)
         {
             if (!CanHotUpdate)
                 return;
 
-            _currentCulture = GetCultureName();
+            _currentCulture = culture ?? GetCurrentUICulture();
             Xaml.UpdateLanguage();
         }
 
@@ -61,15 +63,15 @@ namespace MultiLanguageForXAML
                 LastError = ex;
             }
 
-            if (_defaultLan == null)
+            if (_defaultCulture == null)
                 return null;
 
             //出现异常或者没有多语言，使用默认语言
-            r = _db.Get(key, _defaultLan);
+            r = _db.Get(key, _defaultCulture);
             return r;
         }
 
-        private static string GetCultureName()
+        private static string GetCurrentUICulture()
         {
             string result = Thread.CurrentThread.CurrentUICulture.Name;
             return result;

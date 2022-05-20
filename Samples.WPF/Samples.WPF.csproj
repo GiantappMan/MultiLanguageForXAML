@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU</Platforms>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

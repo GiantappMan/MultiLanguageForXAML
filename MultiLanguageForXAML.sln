@@ -7,12 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{6970
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.WPF", "Samples.WPF\Samples.WPF.csproj", "{B4892761-5C12-4999-9F4E-A84BF5D1D3C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{06B1FF62-175B-4C1A-BC5F-2D1804DA4E61}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet\create-packages.cmd = NuGet\create-packages.cmd
-		NuGet\MultiLanguageForXAML.nuspec = NuGet\MultiLanguageForXAML.nuspec
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLanguageForXAML.WPF", "MultiLanguageForXAML.WPF\MultiLanguageForXAML.WPF.csproj", "{B6B604AF-CAC2-42D8-AD50-A464BE32CEB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{7A6FD990-7E29-44DC-9655-EAC5D7AB2C42}"
