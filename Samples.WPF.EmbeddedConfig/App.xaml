@@ -1,7 +1,7 @@
 ﻿<Application
-    x:Class="Samples.WPF.App"
+    x:Class="Samples.WPF.EmbeddedConfig.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Samples.WPF">
+    xmlns:local="clr-namespace:Samples.WPF.EmbeddedConfig">
     <Application.Resources />
 </Application>

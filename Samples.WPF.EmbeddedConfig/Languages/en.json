@@ -1,0 +1,21 @@
+﻿{
+  "header": "header",
+  "txt": "one",
+  "txt2": "two",
+  "txt3": "three",
+  "txtBlock_format1": "format 1 {0}",
+  "txtBlock_format2": "format 2 {0} {1}",
+  "txtBlock_format3": "format 3 {1} {0} {2}",
+  "zh": "Chinese",
+  "en": "English",
+  "btn_readInCode": "read in code",
+  "title": "title",
+  "chk": "checkbox",
+  "expander": "expander",
+  "label": "label",
+  "menuItem": "MenuItem",
+  "radioBtn": "RadioBtn",
+  "textBlock": "textblock",
+  "red": "red",
+  "blue": "blue"
+}

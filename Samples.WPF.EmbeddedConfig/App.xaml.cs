@@ -4,12 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Samples.WPF
+namespace Samples.WPF.EmbeddedConfig
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -18,8 +17,7 @@ namespace Samples.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
-            LanService.Init(new JsonFileDB(path), true, "en");
+            LanService.Init(new EmbeddedJsonDB("Samples.WPF.EmbeddedConfig.Languages"), true, "en");
             MainWindow mainwindow = new();
             mainwindow.Show();
             base.OnStartup(e);

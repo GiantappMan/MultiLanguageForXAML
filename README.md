@@ -38,7 +38,7 @@
 //怀疑用Environment.CurrentDirectory开机启动时目录会出错，待验证
 string appDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 string path = Path.Combine(appDir, "Res\\Languages");
-LanService.Init(new JsonDB(path), true,"zh");
+LanService.Init(new JsonFileDB(path), true,"zh");
 ```
 
 - **XAML**

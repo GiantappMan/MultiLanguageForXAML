@@ -2,19 +2,19 @@
 using System.IO;
 using System.Text.Json;
 
-namespace MultiLanguageForXAML
+namespace MultiLanguageForXAML.DB
 {
-    public class JsonDB : IDataBase
+    public class JsonFileDB : IDataBase
     {
         private readonly string? jsonDir;
         private readonly Dictionary<string, JsonElement> dataDict = new();
 
-        public JsonDB()
+        public JsonFileDB()
         {
 
         }
 
-        public JsonDB(string jsonDir)
+        public JsonFileDB(string jsonDir)
         {
             this.jsonDir = jsonDir;
         }

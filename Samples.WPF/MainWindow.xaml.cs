@@ -1,4 +1,5 @@
 ﻿using MultiLanguageForXAML;
+using MultiLanguageForXAML.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,6 @@ namespace Samples.WPF
     {
         public MainWindow()
         {
-            string path = System.IO.Path.Combine(Environment.CurrentDirectory, "Languages");
-            LanService.Init(new JsonDB(path), true,"en");
             InitializeComponent();
             CB.SelectionChanged += CB_SelectionChanged;
         }
