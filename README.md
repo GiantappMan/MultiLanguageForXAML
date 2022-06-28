@@ -39,6 +39,8 @@
 string appDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 string path = Path.Combine(appDir, "Res\\Languages");
 LanService.Init(new JsonFileDB(path), true,"zh");
+//嵌入模式
+//LanService.Init(new EmbeddedJsonDB("Samples.WPF.EmbeddedConfig.Languages"), true, "en");
 ```
 
 - **XAML**
