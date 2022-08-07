@@ -1,9 +1,58 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 namespace MultiLanguageForXAML.DB
 {
+#if NET46
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    public class JsonFileDB : IDataBase
+    {
+        private readonly string? jsonDir;
+        private readonly Dictionary<string, JObject?> dataDict = new();
+
+        public JsonFileDB()
+        {
+
+        }
+
+        public JsonFileDB(string jsonDir)
+        {
+            this.jsonDir = jsonDir;
+        }
+
+        public string? Get(string key, string cultureName)
+        {
+            if (jsonDir == null)
+                return null;
+
+            if (!dataDict.ContainsKey(cultureName))
+            {
+                var files = Directory.GetFiles(jsonDir, $"{cultureName}.json");
+                //找不到匹配的，找近似的。例如 zh-CHS找不到,zh也可以
+                if (files.Length == 0)
+                {
+                    bool isSubLan = cultureName.Split('-').Length > 1;
+                    if (isSubLan)
+                        files = Directory.GetFiles(jsonDir, $"{cultureName.Split('-')[0]}*");
+                }
+
+                if (files.Length == 0)
+                    return null;
+
+                string json = File.ReadAllText(files[0]);
+                var data = JsonConvert.DeserializeObject<JObject>(json);
+                dataDict.Add(cultureName, data);
+            }
+
+            string? result = dataDict[cultureName]?[key]?.ToString();
+            return result;
+        }
+    }
+#endif
+
+#if NETCOREAPP
+    using System.Text.Json;
     public class JsonFileDB : IDataBase
     {
         private readonly string? jsonDir;
@@ -47,4 +96,5 @@ namespace MultiLanguageForXAML.DB
             return result;
         }
     }
+#endif
 }
