@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MultiLanguageForXAML.DB
 {
-#if NET46
+#if NET462
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     public class EmbeddedJsonDB : IDataBase
