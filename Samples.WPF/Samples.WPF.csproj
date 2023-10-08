@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <!--<TargetFramework>net6.0-windows</TargetFramework>-->
     <LangVersion>10.0</LangVersion>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU</Platforms>
     <Nullable>enable</Nullable>

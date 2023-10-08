@@ -3,7 +3,7 @@ using System.IO;
 
 namespace MultiLanguageForXAML.DB
 {
-#if NET46
+#if NET462
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     public class JsonFileDB : IDataBase

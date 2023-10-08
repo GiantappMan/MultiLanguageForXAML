@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net46;net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>
@@ -24,8 +24,8 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="IndexRange" Version="1.0.2" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="IndexRange" Version="1.0.3" />
   </ItemGroup>
 </Project>
