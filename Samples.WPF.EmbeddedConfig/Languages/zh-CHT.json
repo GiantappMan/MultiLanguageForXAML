@@ -1,0 +1,22 @@
+﻿{
+  "header": "頭",
+  "txt": "一",
+  "txt2": "二",
+  "txt3": "三",
+  "txtBlock_format1": "格式化1 {0}",
+  "txtBlock_format2": "格式化2 {0} {1}",
+  "txtBlock_format3": "格式化3 {1} { 100 } {0} aaa {2} bb",
+  "txtBlock_only": "只有中文有",
+  "btn_readInCode": "從代碼中讀取",
+  "zh": "中文",
+  "en": "英語",
+  "title": "標題",
+  "chk": "複選框",
+  "expander": "展開",
+  "label": "標籤",
+  "menuItem": "菜單項",
+  "radioBtn": "單選框",
+  "textBlock": "文本",
+  "red": "紅色",
+  "blue": "藍色"
+}

@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -15,6 +16,10 @@
     <EmbeddedResource Include="Languages\*.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Languages\zh-CHT.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <Version>2.3.0.1</Version>
+    <Version>2.3.0.2</Version>
     <AssemblyName>MultiLanguageForXAML</AssemblyName>
     <RootNamespace>MultiLanguageForXAML</RootNamespace>
     <Platforms>AnyCPU</Platforms>

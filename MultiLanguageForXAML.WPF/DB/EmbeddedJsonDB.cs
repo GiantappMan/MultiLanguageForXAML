@@ -37,7 +37,7 @@ namespace MultiLanguageForXAML.DB
                 {
                     bool isSubLan = cultureName.Split('-').Length > 1;
                     if (isSubLan)
-                        files = GetEmbeddedJsonFile(basePath, $"{cultureName.Split('-')[0]}*");
+                        files = GetEmbeddedJsonFile(basePath, $"{cultureName.Split('-')[0]}");
                 }
 
                 if (files.Length == 0)
@@ -55,6 +55,15 @@ namespace MultiLanguageForXAML.DB
         private static string[] GetEmbeddedJsonFile(string basePath, string cultureName)
         {
             var files = Assembly.GetEntryAssembly()!.GetManifestResourceNames().Where(m => m.StartsWith($"{basePath}.{cultureName}")).ToArray();
+            //完全匹配的排在第一个
+            Array.Sort(files, (a, b) =>
+            {
+                if (a == $"{basePath}.{cultureName}.json")
+                    return -1;
+                if (b == $"{basePath}.{cultureName}.json")
+                    return 1;
+                return 0;
+            });
             return files;
         }
 
