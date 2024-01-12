@@ -83,6 +83,4 @@ Xaml.CustomMaps.Add(typeof(CustomTitleBar), CustomTitleBar.TitleProperty);
 
 ## 广而告之
 
-[应用推荐](https://giantapp.cn/categories/products)
-
-全栈开发QQ群：191034956
+[应用推荐]([https://giantapp.cn/categories/products](https://www.mscoder.cn/projects)https://www.mscoder.cn/projects)
